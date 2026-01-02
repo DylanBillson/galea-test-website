@@ -1,0 +1,76 @@
+<!-- /components/conditions.html -->
+<section class="conditions card" aria-labelledby="conditionsTitle">
+  <div class="conditions-head">
+    <h2 class="section-title" id="conditionsTitle">How Galea works across mental health needs</h2>
+    <p class="lead conditions-sub">
+      Select a topic to see how Galea supports structured understanding, tracking, and next steps.
+    </p>
+  </div>
+
+  <!-- Chip grid -->
+  <div class="conditions-grid" role="list">
+    <button class="cond-chip" type="button" data-cond="ocd">OCD</button>
+    <button class="cond-chip" type="button" data-cond="ptsd">PTSD</button>
+    <button class="cond-chip" type="button" data-cond="anxiety">Anxiety</button>
+    <button class="cond-chip" type="button" data-cond="addiction">Addiction</button>
+    <button class="cond-chip" type="button" data-cond="depression">Depression</button>
+    <button class="cond-chip" type="button" data-cond="neurodiversity">Neurodiversity</button>
+    <button class="cond-chip" type="button" data-cond="mood">Mood disorders</button>
+    <button class="cond-chip" type="button" data-cond="grief">Grief &amp; stress</button>
+    <button class="cond-chip" type="button" data-cond="trauma">Trauma &amp; abuse</button>
+    <button class="cond-chip" type="button" data-cond="eating">Eating disorders</button>
+    <button class="cond-chip" type="button" data-cond="psychotic">Psychotic disorders</button>
+    <button class="cond-chip" type="button" data-cond="personality">Personality disorders</button>
+  </div>
+
+  <!-- Expanding info panel (sits BELOW the section) -->
+  <div class="cond-panel" id="condPanel" hidden>
+    <div class="cond-panel-inner" role="region" aria-live="polite" aria-label="Condition details">
+      <div class="cond-panel-top">
+        <h3 class="cond-title" id="condTitle">Title</h3>
+        <button class="cond-close" type="button" aria-label="Close details" data-cond-close>Close</button>
+      </div>
+
+      <div class="cond-body" id="condBody"></div>
+
+      <div class="cond-actions" id="condActions"></div>
+    </div>
+  </div>
+
+  <!-- Data blocks (hidden) -->
+  <template id="condData-ocd">
+    <p>OCD involves unwanted thoughts (obsessions) and repetitive behaviours (compulsions). Symptoms can be distressing and disruptive, even when a person recognises they’re irrational.</p>
+    <p><strong>Related conditions include:</strong></p>
+    <ul class="cond-list">
+      <li>Pure O (intrusive thoughts)</li>
+      <li>Body Dysmorphic Disorder (BDD)</li>
+      <li>Hoarding Disorder</li>
+      <li>Trichotillomania</li>
+      <li>Excoriation Disorder</li>
+    </ul>
+    <p>Galea supports structured reflection and symptom tracking over time, helping people (and clinicians, where relevant) spot patterns and decide on next steps.</p>
+  </template>
+
+  <template id="condActions-ocd">
+    <a class="btn btn-secondary" href="https://www.ocduk.org/ocd/" target="_blank" rel="noopener noreferrer">OCD UK</a>
+  </template>
+
+  <template id="condData-anxiety">
+    <p>Anxiety is a normal response to stress — but when it becomes persistent, overwhelming, or interferes with daily life, it may be part of an anxiety disorder.</p>
+    <p><strong>Common forms include:</strong></p>
+    <ul class="cond-list">
+      <li>Generalised Anxiety Disorder (GAD)</li>
+      <li>Panic Disorder</li>
+      <li>Social Anxiety</li>
+      <li>Specific phobias (e.g., agoraphobia, health anxiety)</li>
+    </ul>
+    <p>Galea helps structure symptoms into a clearer picture — useful for self-understanding, monitoring change, or supporting clinical conversations.</p>
+  </template>
+
+  <template id="condActions-anxiety">
+    <a class="btn btn-secondary" href="https://www.nhs.uk/mental-health/conditions/generalised-anxiety-disorder-gad/" target="_blank" rel="noopener noreferrer">NHS – Anxiety disorders</a>
+  </template>
+
+  <!-- Add the rest in the same pattern:
+       condData-ptsd + condActions-ptsd, etc. -->
+</section>

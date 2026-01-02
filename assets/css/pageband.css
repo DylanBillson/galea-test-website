@@ -1,0 +1,53 @@
+/* ================= Page Intro Band ================= */
+
+.page-intro{
+  position: relative;
+  background: linear-gradient(135deg, var(--blue), var(--blue-2));
+  color: #fff;
+
+  padding: clamp(2rem, 4vw, 3rem) 0;
+}
+
+/* Inner wrapper */
+.page-intro-inner{
+  max-width: 72ch;
+}
+
+/* Eyebrow */
+.page-eyebrow{
+  margin: 0 0 .35rem 0;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  font-size: .8rem;
+  opacity: .9;
+
+  text-align: left;
+}
+
+/* Title */
+.page-title{
+  margin: 0 0 .6rem 0;
+  font-size: clamp(2rem, 3.2vw, 2.6rem);
+  line-height: 1.1;
+  letter-spacing: -.03em;
+
+  text-align: left;
+}
+
+/* Intro text */
+.page-intro-text{
+  margin: 0;
+  font-size: 1.1rem;
+  color: rgba(255,255,255,.92);
+  max-width: 60ch;
+
+  text-align: left;
+}
+
+/* Slightly tighter on small screens */
+@media (max-width: 600px){
+  .page-intro{
+    padding: 1.8rem 0 2.2rem 0;
+  }
+}

@@ -1,0 +1,107 @@
+/* ================= Our Team page ================= */
+
+.page-head{
+  max-width: 70ch;
+  margin-bottom: 1.25rem;
+}
+
+.page-subtext{
+  margin:0;
+  color: var(--muted);
+  font-size: 1.05rem;
+}
+
+/* Featured (Founder + CEO) */
+.team-featured{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 1.2rem;
+}
+
+.team-card{
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.team-card--featured{
+  display:grid;
+  grid-template-columns: 160px 1fr;
+  gap: 1rem;
+  padding: 1.1rem;
+  align-items:start;
+}
+
+.team-photo{
+  border-radius: 16px;
+  overflow:hidden;
+  border: 1px solid rgba(0,0,0,.08);
+  background: rgba(0,0,0,.02);
+  aspect-ratio: 1 / 1;
+}
+
+.team-photo img{
+  width:100%;
+  height:100%;
+  object-fit: cover;
+  display:block;
+}
+
+.team-body{
+  display:flex;
+  flex-direction:column;
+  gap:.35rem;
+}
+
+.team-name{
+  margin:0;
+  color: var(--grey);
+  letter-spacing:-.01em;
+}
+
+.team-title{
+  margin:0;
+  font-weight: 700;
+  color: rgba(62,62,60,.78);
+}
+
+.team-bio{
+  margin:.55rem 0 0 0;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* Small cards */
+.team-grid{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+
+.team-card--small{
+  padding: 1.05rem;
+}
+
+.team-card--small .team-name{
+  font-size: 1.1rem;
+}
+
+.team-card--small .team-title{
+  margin-top: .35rem;
+}
+
+/* Responsive */
+@media (max-width: 980px){
+  .team-featured{
+    grid-template-columns: 1fr;
+  }
+  .team-card--featured{
+    grid-template-columns: 120px 1fr;
+  }
+  .team-grid{
+    grid-template-columns: 1fr;
+  }
+}

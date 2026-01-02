@@ -1,0 +1,230 @@
+/* ================= Header ================= */
+
+.site-header{
+  position:sticky;
+  top:0;
+  z-index:50;
+  background:rgba(255,255,255,.85);
+  backdrop-filter: blur(10px);
+  border-bottom:1px solid var(--border);
+}
+
+.header-inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:1rem;
+  padding:.85rem 0;
+}
+
+/* Logo */
+.logo-link{
+  display:flex;
+  align-items:center;
+  text-decoration:none;
+  flex: 0 0 auto;
+}
+
+.logo{
+  height:80px;            /* tweak if needed */
+  width:auto;
+  display:block;
+}
+
+.nav{
+  display:none;
+  gap:.35rem;
+  align-items:center;
+  flex-wrap: nowrap;        /* ⬅️ do not wrap */
+  white-space: nowrap;     /* ⬅️ prevent line breaks */
+}
+
+/* Dropdown wrapper (details) */
+.nav-dd{
+  position:relative;
+}
+
+/* Hide the default details marker */
+.nav-dd > summary::-webkit-details-marker{
+  display:none;
+}
+.nav-dd > summary{
+  list-style:none;
+}
+
+/* Trigger (summary) — aligned to your dropdown-summary spacing/motion */
+.nav-link{
+  cursor:pointer;
+  color:var(--grey);
+  font-weight:650;
+  font-size: clamp(0.82rem, 1.1vw, 0.95rem);
+  opacity:.92;
+
+  display:inline-flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:.55rem;
+
+  padding:.65rem .85rem;        /* closer to dropdown-summary */
+  border-radius:999px;
+
+  background: transparent;
+  border: 1px solid transparent;
+  user-select:none;
+  white-space: nowrap;
+  transition: transform .15s ease, background-color .15s ease, border-color .15s ease, opacity .15s ease;
+}
+
+/* Lift on hover (like your dropdown/button interactions) */
+.nav-link:hover{
+  opacity:1;
+  text-decoration:none;
+  background: rgba(0,102,204,.06);
+  border-color: rgba(0,102,204,.14);
+  transform: translateY(-2px);
+}
+
+.nav-link:active{
+  transform: translateY(0);
+}
+
+/* Focus (keyboard) */
+.nav-link:focus,
+.nav-link:focus-visible{
+  outline: 3px solid rgba(0,102,204,.25);
+  outline-offset: 3px;
+}
+
+/* Chevron behaviour aligned to .chev pattern */
+.nav-link::after{
+  content:"▾";
+  display:inline-block;
+  opacity:.85;
+  transition: transform .15s ease, opacity .15s ease;
+}
+
+/* Nudge chevron on hover (like your dropdown-summary hover) */
+.nav-link:hover::after{
+  transform: translateX(4px);
+  opacity:1;
+}
+
+/* When open: rotate and keep nudge */
+.nav-dd[open] > .nav-link::after{
+  transform: translateX(4px) rotate(180deg);
+  opacity:1;
+}
+
+/* Panel — same reveal pattern as dropdown-panel (but white) */
+.nav-panel{
+  position:absolute;
+  top: calc(100% + .6rem);  /* matches your dropdown-panel spacing */
+  left:0;
+  min-width: 240px;
+  z-index:60;
+
+  background:#fff;
+  border:1px solid rgba(0,0,0,.10);
+  border-radius:16px;
+  padding:.6rem;
+
+  box-shadow: 0 18px 45px rgba(0,0,0,.14);
+
+  opacity:0;
+  transform: translateY(-6px);
+  pointer-events:none;
+
+  transition: opacity .15s ease, transform .15s ease;
+  
+}
+.nav-panel{
+  display:grid;
+  gap:.35rem;                    /* match dropdown-list gap */
+}
+
+/* Visible when open */
+.nav-dd[open] .nav-panel{
+  opacity:1;
+  transform: translateY(0);
+  pointer-events:auto;
+}
+
+/* Panel links — same spacing/arrow motion language as dropdown-list a (but neutral) */
+.nav-panel a{
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:.6rem;
+
+  padding:.65rem .75rem;
+  border-radius:12px;
+
+  font-weight:650;
+  color:var(--grey);
+  text-decoration:none;
+
+  background: rgba(0,0,0,.02);
+  border: 1px solid rgba(0,0,0,.06);
+
+  transition:
+    background-color .15s ease,
+    border-color .15s ease,
+    transform .15s ease;
+}
+
+/* Arrow motion like buttons */
+.nav-panel a::after{
+  content:"→";
+  display:inline-block;
+  opacity:.65;
+  transform: translateX(0);
+  transition: transform .15s ease, opacity .15s ease;
+}
+
+.nav-panel a:hover{
+  background:#fff;
+  border-color: rgba(0,102,204,.22);
+  transform: translateY(-2px);
+}
+
+.nav-panel a:hover::after{
+  transform: translateX(4px);
+  opacity:1;
+}
+
+.nav-panel a:active{
+  transform: translateY(0);
+}
+
+/* Header actions */
+.header-actions{
+  display:flex;
+  gap:.6rem;
+}
+
+/* Desktop */
+@media (min-width: 900px){
+  .nav{ display:flex; }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce){
+  .nav-link,
+  .nav-link::after,
+  .nav-panel,
+  .nav-panel a,
+  .nav-panel a::after{
+    transition:none;
+  }
+}
+/* Prevent header CTA from wrapping */
+.header-actions .btn{
+  white-space: nowrap;          /* never wrap text */
+  flex-shrink: 0;               /* don’t shrink into two lines */
+}
+.header-actions .btn{
+  white-space: nowrap;
+  flex-shrink: 1;
+  font-size: clamp(0.85rem, 1.1vw, 1rem);
+}

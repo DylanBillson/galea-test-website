@@ -1,0 +1,73 @@
+/* ================= Our Story (Eras) ================= */
+
+.story{
+  display:flex;
+  flex-direction:column;
+  gap:1rem;
+  position:relative;
+}
+
+/* Subtle vertical line for the timeline */
+.story::before{
+  content:"";
+  position:absolute;
+  left:14px;
+  top:8px;
+  bottom:8px;
+  width:2px;
+  background: rgba(0,0,0,.10);
+}
+
+.era{
+  display:grid;
+  grid-template-columns: 32px 1fr;
+  gap:1rem;
+  align-items:start;
+  position:relative;
+}
+
+.era-marker{
+  width:14px;
+  height:14px;
+  border-radius:999px;
+  background: linear-gradient(135deg, var(--blue), var(--blue-2));
+  box-shadow: 0 10px 24px rgba(0,102,204,.25);
+  margin-top: 1.05rem; /* aligns marker with title */
+  justify-self:center;
+}
+
+.era-card{
+  background: var(--card);
+  border:1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.25rem;
+}
+
+.era-title{
+  margin:0 0 .55rem 0;
+  color: var(--grey);
+  font-size: 1.35rem;
+  letter-spacing:-.02em;
+}
+
+.era-text{
+  margin:0;
+  color: var(--muted);
+  line-height: 1.65;
+  max-width: 75ch;
+}
+
+/* Responsive */
+@media (max-width: 600px){
+  .story::before{
+    left:12px;
+  }
+  .era{
+    grid-template-columns: 28px 1fr;
+    gap:.85rem;
+  }
+  .era-card{
+    padding: 1.05rem;
+  }
+}

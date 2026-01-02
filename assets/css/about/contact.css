@@ -1,0 +1,253 @@
+/* ===== Contact Page (add to /assets/css/styles.css) ===== */
+
+.contact-layout{
+  display:grid;
+  grid-template-columns: .85fr 1.15fr;
+  gap: 1rem;
+  align-items:start;
+}
+
+.contact-card{
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.25rem;
+}
+
+.contact-card-title{
+  margin:0 0 1rem 0;
+  color: var(--grey);
+  font-size: 1.25rem;
+  letter-spacing: -.02em;
+}
+
+.contact-info-label{
+  margin: 1rem 0 .25rem 0;
+  font-size: .9rem;
+  font-weight: 800;
+  color: var(--grey);
+}
+
+.contact-info-value{
+  margin:0;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.contact-link{
+  color: var(--blue);
+  font-weight: 750;
+  text-decoration:none;
+}
+.contact-link:hover{ text-decoration:none; }
+
+/* Form */
+.form-grid{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap: .9rem 1rem;
+}
+
+.field{
+  display:flex;
+  flex-direction:column;
+  gap:.45rem;
+}
+
+.field-full{
+  grid-column: 1 / -1;
+}
+
+label{
+  font-weight: 750;
+  color: var(--grey);
+}
+
+.req{
+  color: var(--blue);
+}
+
+input, select, textarea{
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: .78rem .9rem;
+  background: #fff;
+  color: var(--grey);
+  outline: none;
+}
+
+textarea{ resize: vertical; }
+
+input:focus, select:focus, textarea:focus{
+  border-color: rgba(0,102,204,.35);
+  box-shadow: 0 0 0 3px rgba(0,102,204,.12);
+}
+
+.form-note{
+  margin:.4rem 0 0 0;
+  font-size: .92rem;
+  color: var(--muted);
+}
+
+.muted{ color: var(--muted); }
+
+/* ===== Better checkbox (Galea style) ===== */
+.check{
+  display:flex;
+  align-items:flex-start;
+  gap:.65rem;
+  margin-top:.55rem;
+  user-select:none;
+  cursor:pointer;
+  color: var(--muted);
+  font-weight: 650;
+}
+
+.check input{
+  position:absolute;
+  opacity:0;
+  width:1px;
+  height:1px;
+}
+
+.check-box{
+  width:20px;
+  height:20px;
+  border-radius:7px;
+  border: 1px solid rgba(0,0,0,.16);
+  background: #fff;
+  box-shadow: 0 8px 18px rgba(0,0,0,.06);
+  display:inline-grid;
+  place-items:center;
+  flex: 0 0 auto;
+  margin-top:.08rem;
+  transition: transform .15s ease, border-color .15s ease, box-shadow .15s ease, background-color .15s ease;
+}
+
+.check:hover .check-box{
+  transform: translateY(-1px);
+  border-color: rgba(0,102,204,.28);
+  box-shadow: 0 14px 28px rgba(0,102,204,.10);
+}
+
+.check input:focus-visible + .check-box{
+  outline: 3px solid rgba(0,102,204,.25);
+  outline-offset: 3px;
+}
+
+.check input:checked + .check-box{
+  background: linear-gradient(135deg, var(--blue), var(--blue-2));
+  border-color: rgba(0,102,204,.35);
+}
+
+.check input:checked + .check-box::after{
+  content:"✓";
+  color:#fff;
+  font-weight:900;
+  font-size:.9rem;
+  transform: translateY(-.5px);
+}
+
+.check-text{
+  line-height:1.35;
+}
+
+/* ===== Phone type attached to phone input (no gap, shared rounding) ===== */
+.phone-group{
+  display:flex;
+  width:100%;
+}
+
+.phone-type{
+  appearance:none;
+  -webkit-appearance:none;
+
+  background: linear-gradient(135deg, var(--blue), var(--blue-2));
+  color:#fff;
+  font-weight:800;
+
+  border: 1px solid rgba(0,102,204,.35);
+  border-right: none;
+
+  padding: .78rem .9rem;
+  border-radius: 14px 0 0 14px;
+
+  min-width: 120px;
+  cursor:pointer;
+
+  outline:none;
+}
+
+.phone-type:focus{
+  box-shadow: 0 0 0 3px rgba(0,102,204,.14);
+}
+
+.phone-type option{
+  color: #111;
+  background: #fff;
+  font-weight: 650;
+}
+
+.phone-input{
+  flex: 1 1 auto;
+  min-width:0;
+
+  border: 1px solid var(--border);
+  border-left: none;
+
+  border-radius: 0 14px 14px 0;
+  padding: .78rem .9rem;
+}
+
+.phone-input:focus{
+  border-color: rgba(0,102,204,.35);
+  box-shadow: 0 0 0 3px rgba(0,102,204,.12);
+}
+
+.phone-group:focus-within .phone-type{
+  border-color: rgba(0,102,204,.45);
+}
+.phone-group:focus-within .phone-input{
+  border-color: rgba(0,102,204,.45);
+}
+
+/* ===== Form alert ===== */
+.form-alert{
+  display:none;
+  margin: .2rem 0 .2rem 0;
+  padding: .8rem 1rem;
+  border-radius: 14px;
+  border: 1px solid rgba(0,102,204,.18);
+  background: rgba(0,102,204,.06);
+  color: var(--grey);
+  font-weight: 650;
+}
+
+.form-alert.show{
+  display:block;
+}
+
+/* Responsive */
+@media (max-width: 980px){
+  .contact-layout{
+    grid-template-columns: 1fr;
+  }
+  .form-grid{
+    grid-template-columns: 1fr;
+  }
+
+  .phone-group{
+    flex-direction: column;
+  }
+  .phone-type{
+    border-right: 1px solid rgba(0,102,204,.35);
+    border-bottom: none;
+    border-radius: 14px 14px 0 0;
+    min-width: 0;
+  }
+  .phone-input{
+    border-left: 1px solid var(--border);
+    border-radius: 0 0 14px 14px;
+  }
+}

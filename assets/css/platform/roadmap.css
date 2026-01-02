@@ -1,0 +1,129 @@
+/* ================= Tables (Global) ================= */
+
+.table-toolbar{
+  display:flex;
+  gap:.5rem;
+  align-items:center;
+  margin: 1rem 0 .75rem 0;
+}
+
+.table-wrap{
+  width:100%;
+  overflow:auto;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  background: var(--card);
+}
+
+/* Base table */
+.table{
+  width:100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  min-width: 720px; /* allows horizontal scroll on mobile instead of crushing */
+}
+
+.table tbody td{
+  padding: .85rem .95rem;
+  border-bottom: 1px solid rgba(0,0,0,.06);
+  vertical-align: middle;
+  color: var(--grey);
+  text-align: left;
+}
+
+.table thead th{
+  position: sticky;
+  top: 0;
+  z-index: 1;
+
+  text-align: left;
+  font-weight: 800;
+  color: #fff;
+
+  background: var(--blue);
+  padding: .9rem .95rem;
+
+  border-bottom: none;
+}
+
+
+.table tbody tr:last-child th,
+.table tbody tr:last-child td{
+  border-bottom:none;
+}
+
+/* Zebra striping (subtle) */
+.table tbody tr:nth-child(even){
+  background: rgba(0,0,0,.015);
+}
+
+/* Hover (gentle) */
+.table tbody tr:hover{
+  background: rgba(0,102,204,.04);
+}
+
+/* Status pills inside cells */
+.status{
+  display:inline-flex;
+  align-items:center;
+  gap:.45rem;
+  padding: .35rem .6rem;
+  border-radius: 999px;
+  font-weight: 750;
+  font-size: .9rem;
+  border: 1px solid transparent;
+  white-space: nowrap;
+}
+
+/* Optional small dot */
+.status::before{
+  content:"";
+  width:8px;
+  height:8px;
+  border-radius:999px;
+  display:inline-block;
+}
+
+/* Available (green) */
+.status-available{
+  color: #0b4d2a;
+  background: rgba(34,197,94,.14);
+  border-color: rgba(34,197,94,.25);
+}
+.status-available::before{
+  background: #22c55e;
+}
+
+/* Coming soon (orange) */
+.status-soon{
+  color: #6a3b00;
+  background: rgba(249,115,22,.16);
+  border-color: rgba(249,115,22,.28);
+}
+.status-soon::before{
+  background: #f97316;
+}
+
+/* Legend pills (reuse status colours but simpler) */
+.pill{
+  display:inline-flex;
+  align-items:center;
+  padding:.35rem .6rem;
+  border-radius:999px;
+  font-weight:750;
+  font-size:.9rem;
+  border:1px solid transparent;
+}
+
+.pill-available{
+  color:#0b4d2a;
+  background: rgba(34,197,94,.14);
+  border-color: rgba(34,197,94,.25);
+}
+
+.pill-soon{
+  color:#6a3b00;
+  background: rgba(249,115,22,.16);
+  border-color: rgba(249,115,22,.28);
+}

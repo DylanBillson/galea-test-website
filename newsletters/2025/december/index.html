@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Galea Monthly Newsletter</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    /* ===== Base reset ===== */
+    body {
+      margin: 0;
+      padding: 0;
+      background: #f3f5f8;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      color: #3e3e3c;
+    }
+    a {
+      color: #0066cc;
+    }
+
+    /* ===== Layout ===== */
+    .wrapper {
+      width: 100%;
+      background: #f3f5f8;
+      padding: 24px 8px;
+    }
+    .newsletter {
+      max-width: 640px;
+      margin: 0 auto;
+      background: #ffffff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
+    }
+
+    /* ===== Preheader (hidden in body, shows in inbox preview) ===== */
+    .preheader {
+      display: none !important;
+      visibility: hidden;
+      opacity: 0;
+      height: 0;
+      width: 0;
+      overflow: hidden;
+      color: transparent;
+    }
+
+    /* ===== Header ===== */
+/* === Header image with rounded top corners === */
+    .header {
+      background: url("https://galea.care/files/newsletter-image-trimmed-header-v2.png") center/cover no-repeat;
+      padding: 20px 24px 10px;     /* spacing for logo + subtitle */
+      color: #ffffff;
+      border-radius: 10px 10px 0 0; /* same radius as newsletter card */
+    }
+    .header-logo-link {
+      display: inline-block;
+      margin: 0 0 6px;
+    }
+    .header-logo-img {
+      display: block;
+      width: 180px;
+      max-width: 100%;
+      height: auto;
+    }
+    .header-subtitle {
+      font-size: 16px;
+      opacity: 0.9;
+    }
+
+    /* ===== Sections ===== */
+    .section {
+      padding: 24px 24px 18px;
+      border-top: 1px solid #e3e6ec;
+    }
+    .section:first-of-type {
+      border-top: none;
+    }
+
+    /* Number badges */
+    .section-label {
+      display: inline-block;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-weight: 600;
+      margin: 0 0 8px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: #f5f8ff;
+      border: 1px solid #d6e4ff;
+      color: #0066cc;
+    }
+
+    .section-title {
+      font-size: 18px;
+      margin: 0 0 10px;
+      color: #111827;
+    }
+    .section-body {
+      font-size: 14px;
+      line-height: 1.6;
+      margin: 0;
+    }
+    .section-body + .section-body {
+      margin-top: 10px;
+    }
+
+    /* ===== Images (always stacked, never side-by-side with text) ===== */
+    .section-image {
+      margin: 18px 0 4px;
+    }
+    .section-image img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      display: block;
+    }
+
+    /* ===== Highlight / quote-style blocks ===== */
+    .highlight {
+      background: #f5f8ff;
+      border-radius: 10px;
+      padding: 14px 16px;
+      margin-top: 12px;
+      border: 1px solid #d6e4ff;
+      font-size: 13px;
+    }
+    .highlight-title {
+      font-weight: 600;
+      margin: 0 0 6px;
+      color: #0066cc;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    /* ===== CTA block ===== */
+    .cta-block {
+      margin-top: 16px;
+      padding: 16px 18px;
+      border-radius: 12px;
+      border: 1px solid #d6e4ff;
+      background: #f5f8ff;
+    }
+    .cta-text {
+      margin: 0 0 12px;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .btn-primary {
+      display: inline-block;
+      padding: 10px 18px;
+      border-radius: 999px;
+      background: #0066cc;
+      color: #ffffff !important;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    /* ===== Footer ===== */
+    .footer {
+      background: #3e3e3c;
+      color: #ffffff;
+      padding: 18px 24px 22px;
+      font-size: 12px;
+      text-align: center; /* centered footer */
+    }
+    .footer a {
+      color: #ffffff;
+      text-decoration: none;
+    }
+    .footer a:hover {
+      text-decoration: underline;
+    }
+    .footer-top {
+      margin-bottom: 10px;
+    }
+
+    .footer-logo-link {
+      display: inline-block;
+      margin-bottom: 8px;
+    }
+    .footer-logo-img {
+      display: block;
+      width: 32px;  /* icon size */
+      height: 32px;
+    }
+
+    .social-links {
+      margin: 8px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+    .social-links li {
+      display: inline-block;
+      margin: 0 6px;
+    }
+    .footer-meta {
+      margin: 12px auto 0;
+      opacity: 0.8;
+      line-height: 1.4;
+      max-width: 520px;
+    }
+
+    /* ===== Mobile tweaks ===== */
+    @media only screen and (max-width: 480px) {
+      .newsletter {
+        border-radius: 0;
+        box-shadow: none;
+      }
+      .header,
+      .section,
+      .footer {
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+      .section-title {
+        font-size: 17px;
+      }
+      .section-body,
+      .cta-text {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- This shows as the preview line in inboxes -->
+  <span class="preheader">
+    This month with Galea: foundations, clarity, and the next steps in our assessment tools.
+  </span>
+
+  <div class="wrapper">
+    <div class="newsletter">
+      <!-- ===== Header ===== -->
+      <header class="header">
+        <div class="header-inner">
+          <a href="https://galea.care" target="_blank" class="header-logo-link">
+            <img src="https://galea.care/files/newsletter-galea-c-logo-name.png"Galea" class="header-logo-img">
+          </a>
+          <p class="header-subtitle">Monthly update · December 2025</p>
+        </div>
+      </header>
+
+      <!-- ===== 1. Short Opening Message ===== -->
+      <section class="section">
+        <p class="section-label">01 · Opening</p>
+        <h1 class="section-title">Merry Christmas and a Happy New Year</h1>
+
+        <p class="section-body">Welcome to our final newsletter of 2025. We’d like to start by wishing you a very merry Christmas and a happy New Year from everyone here at Galea.</p>
+        <p class="section-body">Throughout the last month, we’ve continued working hard on platform improvements, particularly on benchmarking and the foundations that make Galea smoother and more intuitive to use. Below, you’ll find a look at what’s been happening behind the scenes, along with a few reflections from our team.</p>
+        <!-- OPTIONAL IMAGE BELOW TEXT -->
+        <div class="section-image">
+          <img src="https://galea.care/files/christmas.png" alt="Laptop on desk">
+        </div>
+      </section>
+
+      <!-- ===== 2. What We’re Focusing On ===== -->
+      <section class="section">
+        <p class="section-label">02 · What we’re focusing on</p>
+        <h2 class="section-title">Looking ahead to 2026</h2>
+        <p class="section-body">This year has been a big one: we launched our rebrand to Galea, delivered the first stage of our improved UI, and built the background infrastructure that will power the next generation of development.</p>
+        <p class="section-body">All of this work has been leading towards an even bigger year in 2026. We’re excited to share more soon and even more excited to get these improvements into your hands.</p>
+        <!-- OPTIONAL IMAGE BELOW TEXT -->
+        <div class="section-image">
+          <img src="https://galea.care/files/forwards.png" alt="Castle">
+        </div>
+      </section>
+
+      <!-- ===== 3. Department Spotlight (Rotate Monthly) ===== -->
+      <section class="section">
+        <p class="section-label">03 · Department spotlight</p>
+        <h2 class="section-title">This month’s focus: Benchmarking</h2>
+        <p class="section-body">Following our successful November update, our development team has been working on implementing benchmarking. We believe this will meaningfully enhance how practitioners understand patterns, guide conversations, and support decision-making. Below is an insight from our founder, Dr. Fif Buckingham:</p>
+
+        <div class="highlight">
+          <p class="highlight-title">Dr Fif Buckingham</p>
+          <p class="section-body">“Thirty years ago, I had a dream: how to help people make better decisions. Now, we finally can, with the wisdom and technologies built into Galea. Mental-health practitioners will be able to check their assessments with the views of their colleagues, staying completely in control but reassured by the collective expertise of thousands of trained professionals. AI our way: accessible intelligence that empowers without taking over.”</p>
+        </div>
+      </section>
+
+      <!-- ===== 4. Customer Story / Use Case / Topic / Feature Highlight ===== -->
+      <section class="section">
+        <p class="section-label">04 · In practice</p>
+        <h2 class="section-title">Did you know?</h2>
+        <p class="section-body">You can switch between assessment types at any stage. This makes it easier to broaden or narrow your focus depending on what emerges in conversation.</p>
+
+        <!-- OPTIONAL IMAGE (STACKED) -->
+        <div class="section-image">
+          <img src="https://galea.care/files/conversation.png" alt="City">
+        </div>
+      </section>
+
+      <!-- ===== 5. Call to Get in Touch ===== -->
+      <section class="section">
+        <p class="section-label">05 · Stay in touch</p>
+        <h2 class="section-title">Help us shape what comes next</h2>
+
+        <div class="cta-block">
+          <p class="cta-text">If you know someone who would benefit from these updates, please pass this newsletter along. The more practitioners and team members we hear from, the better we can shape Galea to meet real-world needs.</p>
+          <p class="cta-text">Galea is built <i>with</i> its users, not just for them. Whether you have suggestions, challenges to flag, ideas you’d like us to explore, or stories of where Galea has helped, we’d really value a conversation.</p>
+          <a href="mailto:info@galea.care" class="btn-primary">Email the team</a>
+        </div>
+      </section>
+
+      <!-- ===== 6. Thanks & Sign Off ===== -->
+      <section class="section">
+        <p class="section-label">06 · Thank you</p>
+        <h2 class="section-title">Thank you for being part of Galea</h2>
+        <p class="section-body">As we approach the end of 2025, we’d like to sincerely thank you for continuing to be part of Galea’s journey. Your feedback, reflections, and lived experience are shaping a platform designed to support mental-health care at every stage.</p>
+        <p class="section-body">Here’s to a meaningful, productive, and supportive year ahead.</p>
+        <p class="section-body">Many thanks,<br><strong>Team Galea</strong>
+        </p>
+      </section>
+
+      <!-- ===== Footer with centered logo + socials ===== -->
+      <footer class="footer">
+        <div class="footer-top">
+          <!-- Replace with your square/mark-only logo SVG -->
+          <a href="https://galea.care" target="_blank" class="footer-logo-link">
+            <img
+              src="https://galea.care/files/newsletter-galea-b-logo.png"
+              alt="Galea home"
+              class="footer-logo-img"
+              width="120"
+              style="max-width:120px; height:auto; display:block;">
+          </a>
+
+          <ul class="social-links">
+            <li>
+              <a href="https://www.linkedin.com/company/galea-care" target="_blank">
+                <img src="https://galea.care/files/newsletter-linkedin.png" alt="LinkedIn" width="20" height="20">
+              </a>
+            </li>
+            <li>
+              <a href="https://www.instagram.com/galea.care/">
+                <img src="https://galea.care/files/newsletter-Instagram.png" alt="Instagram" width="20" height="20">
+              </a>
+            </li>
+            <li>
+              <a href="https://www.threads.com/@galea.care">
+                <img src="https://galea.care/files/newsletter-threads.png" alt="Threads" width="20" height="20">
+              </a>
+            </li>
+            <li>
+              <a href="https://bsky.app/profile/galea.care">
+                <img src="https://galea.care/files/newsletter-bluesky.png" alt="Bluesky" width="20" height="20">
+              </a>
+            </li>
+            <li>
+              <a href="https://mastodon.social/@galea_care">
+                <img src="https://galea.care/files/newsletter-mastodon.png" alt="Mastodon" width="20" height="20">
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer-meta">You’re receiving this because you’re part of the Galea community. If these updates are no longer helpful, you can unsubscribe via the link below.
+        </div>
+      </footer>
+    </div>
+  </div>
+</body>
+</html>

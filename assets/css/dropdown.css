@@ -1,0 +1,172 @@
+/* ========= Floating Blue Dropdown (Button-aligned interactions) ========= */
+
+/* Wrap sits at bottom of card */
+.dropdown-wrap{
+  margin-top:auto;
+  position:relative;
+}
+
+/* Details container */
+.dropdown{
+  position:relative;
+}
+
+/* Hide default marker */
+.dropdown summary::-webkit-details-marker{
+  display:none;
+}
+
+/* Trigger (summary) — styled like primary button */
+.dropdown-summary{
+  cursor:pointer;
+  list-style:none;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:.75rem;
+
+  padding:.85rem 1rem;
+  border-radius:999px;
+
+  font-weight:800;
+  color:#fff;
+
+  background: linear-gradient(135deg, var(--blue), var(--blue-2));
+  border:none;
+  box-shadow: 0 8px 20px rgba(0,102,204,.35);
+
+  user-select:none;
+
+  transition: transform .15s ease, box-shadow .15s ease, filter .15s ease;
+}
+
+/* Lift on hover (like buttons) */
+.dropdown-summary:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 14px 28px rgba(0,102,204,.40);
+}
+
+/* Active press */
+.dropdown-summary:active{
+  transform: translateY(0);
+}
+
+/* Focus style (keyboard) */
+.dropdown-summary:focus,
+.dropdown-summary:focus-visible{
+  outline: 3px solid rgba(255,255,255,.75);
+  outline-offset: 3px;
+}
+
+/* Chevron (moves like button arrow + rotates when open) */
+.chev{
+  transition: transform .15s ease;
+  opacity:.95;
+}
+
+/* Nudge chevron on hover (button-like arrow motion) */
+.dropdown-summary:hover .chev{
+  transform: translateX(4px);
+}
+
+/* When open: rotate (and keep the nudge) */
+.dropdown[open] .chev{
+  transform: translateX(4px) rotate(180deg);
+}
+
+/* Floating panel (does not stretch card) */
+.dropdown-panel{
+  position:absolute;
+  top: calc(100% + .6rem);
+  left:0;
+  right:0;
+  z-index:20;
+
+  background: linear-gradient(180deg, var(--blue), #004fa3);
+  border-radius:16px;
+  padding:.6rem;
+
+  box-shadow: 0 18px 45px rgba(0,0,0,.35);
+
+  opacity:0;
+  transform: translateY(-6px);
+  pointer-events:none;
+  transition: opacity .15s ease, transform .15s ease;
+}
+
+/* Visible when open */
+.dropdown[open] .dropdown-panel{
+  opacity:1;
+  transform: translateY(0);
+  pointer-events:auto;
+}
+
+/* List layout */
+.dropdown-list{
+  list-style:none;
+  margin:0;
+  padding:0;
+  display:grid;
+  gap:.35rem;
+}
+
+/* Links — remove underline behaviour, use arrow motion like buttons */
+.dropdown-list a{
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:.6rem;
+
+  padding:.65rem .75rem;
+  border-radius:12px;
+
+  font-weight:650;
+  color:#fff;
+  text-decoration:none;
+
+  background: rgba(255,255,255,.12);
+  border: 1px solid rgba(255,255,255,.18);
+
+  transition:
+    background-color .15s ease,
+    border-color .15s ease,
+    transform .15s ease;
+}
+
+/* Arrow on each item (button-like) */
+.dropdown-list a::after{
+  content:"→";
+  display:inline-block;
+  opacity:.85;
+  transform: translateX(0);
+  transition: transform .15s ease, opacity .15s ease;
+}
+
+/* Hover: lift slightly + arrow slides right */
+.dropdown-list a:hover{
+  background: rgba(255,255,255,.22);
+  border-color: rgba(255,255,255,.35);
+  transform: translateY(-2px);
+}
+
+.dropdown-list a:hover::after{
+  transform: translateX(4px);
+  opacity:1;
+}
+
+/* Active press */
+.dropdown-list a:active{
+  transform: translateY(0);
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce){
+  .dropdown-summary,
+  .chev,
+  .dropdown-panel,
+  .dropdown-list a,
+  .dropdown-list a::after{
+    transition:none;
+  }
+}

@@ -1,0 +1,75 @@
+/* ===== Pricing page blocks (add to /assets/css/styles.css) ===== */
+
+.pricing-block{
+  margin-top: 1.1rem;
+}
+
+.pricing-block--panel{
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.25rem;
+  margin-top: 1.25rem;
+}
+
+.section-title{
+  margin:0 0 .75rem 0;
+  color: var(--grey);
+  font-size: 1.5rem;
+  letter-spacing:-.02em;
+}
+
+.lead{
+  margin:.75rem 0 0 0;
+  color: var(--muted);
+  line-height: 1.7;
+  max-width: 80ch;
+}
+
+.pricing-block .btn{
+  margin-top: 1rem;
+}
+
+/* Optional: tighten tick list inside pricing panels */
+.pricing-block .ticks-list{
+  margin-top: .85rem;
+}
+
+/* Table helpers used on pricing page:
+   (Assumes you already added your global .table, .table-wrap, .status styles.)
+   If not, paste your global table CSS block above these. */
+.status-na{
+  color:#4a4a4a;
+  background: rgba(0,0,0,.06);
+  border-color: rgba(0,0,0,.10);
+}
+.status-na::before{
+  background: rgba(0,0,0,.35);
+}
+
+/* Make Details column readable on smaller widths */
+.table td{
+  color: var(--muted);
+}
+
+/* Responsive spacing */
+@media (max-width: 980px){
+  .pricing-block--panel{
+    padding: 1.05rem;
+  }
+}
+/* Pricing page: two-column card row */
+.two-col{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  align-items: stretch; /* makes cards match height nicely */
+}
+
+/* Mobile */
+@media (max-width: 980px){
+  .two-col{
+    grid-template-columns: 1fr;
+  }
+}

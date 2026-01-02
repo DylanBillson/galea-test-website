@@ -1,0 +1,57 @@
+/* ================= Platform / Overview ================= */
+
+/* Jump buttons inside the page-intro band */
+.page-jumps{
+  margin-top: 1.1rem;
+  display:flex;
+  flex-wrap:wrap;
+  gap:.7rem;
+}
+
+/* “Glass” button that contrasts against the hero gradient */
+.btn-jump{
+  background: rgba(255,255,255,.16);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,.28);
+  box-shadow: 0 10px 24px rgba(0,0,0,.14);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* Keep the arrow behavior from .btn */
+.btn-jump:hover{
+  box-shadow: 0 14px 34px rgba(0,0,0,.18);
+  border-color: rgba(255,255,255,.42);
+}
+
+/* “Outlined” version for secondary jumps (still interesting, not boring) */
+.btn-jump-outline{
+  background: rgba(0,0,0,.10);
+  color:#fff;
+  border: 1px solid rgba(255,255,255,.22);
+  box-shadow: none;
+}
+
+.btn-jump-outline:hover{
+  background: rgba(0,0,0,.14);
+  border-color: rgba(255,255,255,.34);
+}
+
+/* Compact helper for stacking cards on the right side of a split */
+.stack{
+  display:grid;
+  gap:rem;
+}
+
+@media (max-width: 980px){
+  .page-jumps{ gap:.6rem; }
+}
+
+/* Give stacked cards more breathing room vertically */
+.stack > .card{
+  margin-bottom: .5rem;
+}
+
+.stack > .card:last-child{
+  margin-bottom: 0;
+}

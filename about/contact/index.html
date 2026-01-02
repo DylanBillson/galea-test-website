@@ -1,0 +1,304 @@
+<!-- contact/index.html -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Contact Galea." />
+  <title>Contact • Galea</title>
+
+  <link rel="stylesheet" href="/assets/css/main.css" />
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Header include -->
+  <div id="site-header"></div>
+
+  <!-- Page intro band -->
+  <section class="page-intro">
+    <div class="container page-intro-inner">
+      <p class="page-eyebrow">Contact</p>
+      <h1 class="page-title">Contact us</h1>
+      <p class="page-intro-text">
+        We’d love to hear from you. Whether you're an individual, practitioner, or organisation looking to collaborate — reach out and let's talk.
+      </p>
+    </div>
+  </section>
+
+  <main id="main" class="section">
+    <div class="container">
+      <section class="contact-layout" aria-label="Contact options and form">
+        <!-- Left: contact info -->
+        <aside class="contact-card" aria-label="Contact information">
+          <h2 class="contact-card-title">Get in touch</h2>
+
+          <div class="contact-info">
+            <h3 class="contact-info-label">Email</h3>
+            <p class="contact-info-value">
+              <a class="contact-link" href="mailto:info@galea.care">info@galea.care</a>
+            </p>
+
+            <h3 class="contact-info-label">Office hours</h3>
+            <p class="contact-info-value">
+              Monday to Friday<br />
+              09:00–17:00 (GMT)
+            </p>
+          </div>
+
+          <div class="contact-note">
+            <p class="muted">
+              If your enquiry relates to a concern or complaint, please select that option in the form so we can route it correctly.
+            </p>
+          </div>
+        </aside>
+
+        <!-- Right: form -->
+        <section class="contact-card" aria-label="Contact form">
+          <h2 class="contact-card-title">Send us a message</h2>
+
+          <form id="contactForm" class="form" action="javascript:void(0)" onsubmit="return false" novalidate>
+            <div class="form-grid">
+              <div class="field">
+                <label for="name">Name <span class="req" aria-hidden="true">*</span><span class="sr-only"> required</span></label>
+                <input type="text" id="name" name="name" autocomplete="name" autocapitalize="words" required />
+              </div>
+
+              <div class="field">
+                <label for="email">Email <span class="req" aria-hidden="true">*</span><span class="sr-only"> required</span></label>
+                <input type="email" id="email" name="email" autocomplete="email" required />
+
+                <!-- Newsletter opt-in -->
+                <label class="check" for="newsletterOptIn">
+                  <input type="checkbox" id="newsletterOptIn" name="newsletterOptIn" />
+                  <span class="check-box" aria-hidden="true"></span>
+                  <span class="check-text">Tick here to sign up for our newsletter</span>
+                </label>
+              </div>
+
+              <!-- Phone + attached dropdown -->
+              <div class="field field-full">
+                <label for="phone">Telephone <span class="muted">(optional)</span></label>
+
+                <div class="phone-group">
+                  <select id="phoneType" name="phoneType" class="phone-type" aria-label="Phone type">
+                    <option value="" selected>Type</option>
+                    <option value="Office">Office</option>
+                    <option value="Mobile">Mobile</option>
+                    <option value="WhatsApp">WhatsApp</option>
+                  </select>
+
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    class="phone-input"
+                    inputmode="tel"
+                    autocomplete="tel"
+                    placeholder="Phone number"
+                  />
+                </div>
+              </div>
+
+              <div class="field field-full">
+                <label for="enquiryType">Type of enquiry <span class="req" aria-hidden="true">*</span><span class="sr-only"> required</span></label>
+                <select id="enquiryType" name="enquiryType" required>
+                  <option value="" selected disabled>Select a type of enquiry</option>
+                  <option value="General">General</option>
+                  <option value="Demo / Sales">Demo / Sales</option>
+                  <option value="Marketing">Marketing</option>
+                  <option value="Finance">Finance</option>
+                  <option value="Technical">Technical</option>
+                  <option value="Clinical">Clinical</option>
+                  <option value="Investment">Investment</option>
+                  <option value="Partnership">Partnership</option>
+                  <option value="Concern / Complaint">Concern / Complaint</option>
+                </select>
+              </div>
+
+              <div class="field field-full">
+                <label for="message">Message <span class="muted">(optional)</span></label>
+                <textarea
+                  id="message"
+                  name="message"
+                  placeholder="Is there anything you'd like to add?"
+                  rows="6"
+                ></textarea>
+
+                <p id="privacyNote" class="form-note">
+                  By sending this form you agree we may contact you about your enquiry.
+                </p>
+              </div>
+
+              <!-- Soft-success alert -->
+              <div class="field field-full">
+                <div id="formAlert" class="form-alert" role="status" aria-live="polite"></div>
+              </div>
+
+              <div class="field field-full">
+                <button type="submit" id="submitBtn" class="btn btn-primary">
+                  Send message
+                </button>
+              </div>
+            </div>
+          </form>
+        </section>
+      </section>
+    </div>
+  </main>
+
+  <!-- Footer include -->
+  <div id="site-footer"></div>
+
+  <script src="/assets/js/includes.js"></script>
+
+  <!-- Contact form script (Xperfecta-style cross-origin webform submit + soft-success) -->
+  <script>
+  (function () {
+    const CONFIG = {
+      websiteName: "Galea",
+      formName: "Contact Form",
+      webFormName: "website-communication-form",
+      apiBaseUrl: "https://galea.care"
+    };
+
+    function pad2(n) {
+      n = String(n);
+      return n.length < 2 ? "0" + n : n;
+    }
+
+    function formatDateTime(dt) {
+      const dd = pad2(dt.getDate());
+      const mm = pad2(dt.getMonth() + 1);
+      const yy = String(dt.getFullYear()).slice(-2);
+      const hh = pad2(dt.getHours());
+      const mi = pad2(dt.getMinutes());
+      return `${dd}/${mm}/${yy} ${hh}:${mi}`;
+    }
+
+    function buildPlainText(values) {
+      const NL = "\n";
+      return [
+        "NAME: " + (values.name || ""),
+        "",
+        "EMAIL: " + (values.email || ""),
+        "",
+        "NEWSLETTER OPT-IN: " + (values.newsletterOptIn ? "YES" : "NO"),
+        "",
+        "PHONE: " + (values.phone || ""),
+        "",
+        "PHONE TYPE: " + (values.phoneType || ""),
+        "",
+        "TYPE OF ENQUIRY: " + (values.enquiryType || ""),
+        "",
+        "MESSAGE:",
+        "",
+        (values.message || "")
+      ].join(NL);
+    }
+
+    async function submitToWebForm(doc) {
+      const fd = new FormData();
+      fd.append("web_form", CONFIG.webFormName);
+      fd.append("data", JSON.stringify(doc));
+
+      const res = await fetch(
+        CONFIG.apiBaseUrl + "/api/method/frappe.website.doctype.web_form.web_form.accept",
+        { method: "POST", body: fd }
+      );
+
+      let data;
+      try { data = await res.json(); }
+      catch (e) { throw new Error("Unexpected response from server."); }
+
+      if (!res.ok || data.exc || data.exc_type) {
+        const msg = data._server_messages || data.message || "Submission failed. Please try again.";
+        throw new Error(typeof msg === "string" ? msg : JSON.stringify(msg));
+      }
+      return data;
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const form = document.getElementById("contactForm");
+      if (!form) return;
+
+      const alertBox = document.getElementById("formAlert");
+      const submitBtn = form.querySelector('button[type="submit"]');
+
+      form.addEventListener("submit", async function (e) {
+        e.preventDefault();
+
+        // Message is optional; browser validity checks required fields only
+        if (!form.checkValidity()) {
+          form.reportValidity();
+          return;
+        }
+
+        const name = (form.querySelector("#name")?.value || "").trim();
+        const email = (form.querySelector("#email")?.value || "").trim();
+        const phone = (form.querySelector("#phone")?.value || "").trim();
+        const phoneType = (form.querySelector("#phoneType")?.value || "").trim();
+        const enquiryType = (form.querySelector("#enquiryType")?.value || "").trim() || "General";
+        const message = (form.querySelector("#message")?.value || "").trim();
+        const newsletterOptIn = !!form.querySelector("#newsletterOptIn")?.checked;
+
+        const now = new Date();
+        const displayName = name || "Website Visitor";
+        const communicationName =
+          CONFIG.websiteName + " - " + CONFIG.formName + " - " + displayName + " - " + formatDateTime(now);
+
+        const plainTextMessage = buildPlainText({
+          name, email, phone, phoneType, enquiryType, message, newsletterOptIn
+        });
+
+        // Map into your Web Form fields (as per Xperfecta)
+        const doc = {
+          communication_name_1: communicationName,
+          communication_message_1: plainTextMessage
+        };
+
+        if (alertBox) {
+          alertBox.textContent = "Sending your message…";
+          alertBox.classList.add("show");
+        }
+        if (submitBtn) {
+          submitBtn.disabled = true;
+          submitBtn.textContent = "Sending…";
+        }
+
+        try {
+          await submitToWebForm(doc);
+
+          if (alertBox) {
+            alertBox.textContent = "Thank you — your message has been recorded.";
+            alertBox.classList.add("show");
+          }
+
+          form.reset();
+          alertBox && alertBox.scrollIntoView({ behavior: "smooth", block: "nearest" });
+
+        } catch (err) {
+          // Soft-success: show thank-you even if galea.care errors/returns unexpected data
+          console.warn("Contact form submit error (ignored):", err);
+
+          if (alertBox) {
+            alertBox.textContent = "Thank you, we'll be in touch soon.";
+            alertBox.classList.add("show");
+          }
+
+          form.reset();
+          alertBox && alertBox.scrollIntoView({ behavior: "smooth", block: "nearest" });
+
+        } finally {
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.textContent = "Send message";
+          }
+        }
+      });
+    });
+  })();
+  </script>
+</body>
+</html>
