@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Articles • Galea</title>
+
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <meta name="description" content="Browse articles on Galea and related topics in mental health and innovation." />
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div id="site-header"></div>
+
+  <!-- Page intro band -->
+  <section class="page-intro">
+    <div class="container page-intro-inner">
+      <p class="page-eyebrow">Resources</p>
+      <h1 class="page-title">Articles</h1>
+      <p class="page-intro-text">
+        Browse articles on Galea and related topics in mental health and innovation.
+      </p>
+    </div>
+  </section>
+
+  <main id="main">
+    <!-- Search -->
+    <section class="section section-alt" id="search" aria-label="Search articles">
+      <div class="container">
+        <div class="research-tools">
+          <div>
+            <h2 class="section-title" style="margin-bottom:.25rem;">Search articles</h2>
+            <p class="section-subtext" style="margin:0;">
+              Search by title, author, date, or keywords in the description.
+            </p>
+          </div>
+
+          <div class="research-search">
+            <label class="sr-only" for="articlesSearch">Search articles</label>
+            <input
+              id="articlesSearch"
+              class="research-input"
+              type="search"
+              placeholder="Search (e.g., NHS survey, waiting times, Guardian, 2025…)">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Grid -->
+    <section class="section" id="articles" aria-label="Articles list">
+      <div class="container">
+        <div class="research-grid" id="articlesGrid"></div>
+
+        <div class="research-empty" id="articlesEmpty" hidden>
+          <p class="research-empty-title">No matches found.</p>
+          <p class="research-empty-text">Try a different term (title, author, description, or date).</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="/assets/js/includes.js"></script>
+
+  <script>
+    (function () {
+      const articles = [
+        {
+          title: "How cloud computing software helps to reduce suicide risks",
+          description: "UKRI writes how GRiST (now Galea) software helps clinicians assess suicide risk more accurately using crowd-sourced insights and cloud computing.",
+          help: "",
+          date: "2023-07-21",
+          author: "UKRI",
+          link: "https://www.ukri.org/who-we-are/how-we-are-doing/research-outcomes-and-impact/esrc/how-cloud-computing-software-helps-to-reduce-suicide-risks/",
+          pinned: true
+        },
+        {
+          title: "One in four young people in England have mental health condition",
+          description: "25.8% of 16–24-year-olds in England now experience mental health conditions like anxiety, depression, or OCD—up sharply from 2014. Self-harm and suicidal ideation are also rising. Despite these figures, more than half of those in need aren’t receiving adequate care.",
+          help: "<strong>How Galea helps:</strong> Galea can support overwhelmed services by offering early triage, enabling young people to self-assess and access support pathways before symptoms escalate. Benchmarking helps prioritise risk, while dashboards inform service planning.",
+          date: "2025-06-26",
+          author: "The Guardian",
+          link: "https://www.theguardian.com/society/2025/jun/26/young-people-england-common-mental-health-conditions-nhs-survey"
+        },
+        {
+          title: "Latest NHS Survey: England’s mental health is getting worse",
+          description: "Mental health conditions among adults are up 20% since 2014. The Mental Health Foundation urges government intervention, citing data that would trigger public health emergency status in any other domain.",
+          help: "<strong>How Galea helps:</strong> Galea offers national-scale monitoring tools that transform individual user assessments into aggregated, anonymised population data—supporting proactive intervention strategies at regional or national levels.",
+          date: "2025-07-02",
+          author: "Mental Health Foundation",
+          link: "https://www.mentalhealth.org.uk/explore-mental-health/blogs/latest-nhs-data-clear-englands-mental-health-getting-worse-and-government-needs-act"
+        },
+        {
+          title: "Rates of common mental health conditions on the rise",
+          description: "One in five adults with mental health conditions remain untreated. Young people, in particular, face rising rates and severe symptom escalation. The current system cannot keep up with rising demand.",
+          help: "<strong>How Galea helps:</strong> By embedding triage and validated self-assessment tools into existing care pathways, Galea helps prioritise cases and guide users to timely, appropriate support—reducing burden on overstretched services.",
+          date: "2025-06-26",
+          author: "Rethink Mental Illness",
+          link: "https://www.rethink.org/news-and-stories/media-centre/2025/06/rates-of-people-living-with-a-common-mental-health-condition-on-the-rise-in-england/"
+        },
+        {
+          title: "People 8× more likely to wait over 18 months for mental health treatment",
+          description: "Mental health patients are far more likely than physical health patients to endure extreme wait times—sometimes exceeding 22 months. These delays increase risk of crisis, dropout, and worsening conditions.",
+          help: "<strong>How Galea helps:</strong> Galea bridges waiting periods with digital tools that support users between referral and appointment—helping maintain safety, flagging deterioration, and reducing crisis escalation risk.",
+          date: "2025-02-21",
+          author: "Rethink Mental Illness",
+          link: "https://www.rethink.org/news-and-stories/media-centre/2025/02/new-analysis-of-nhs-data-on-mental-health-waiting-times"
+        },
+        {
+          title: "Urgent adult mental health crisis referrals double in a year",
+          description: "Crisis referrals have more than doubled in 12 months. The CQC cites premature discharge, bed shortages, and service gaps—especially for Black and disadvantaged communities.",
+          help: "<strong>How Galea helps:</strong> With clinician-guided assessments and self-referral tools, Galea empowers individuals to seek help earlier and equips providers with actionable, validated data to reduce unnecessary escalation.",
+          date: "2025-03-13",
+          author: "The Guardian",
+          link: "https://www.theguardian.com/society/2025/mar/13/adult-mental-health-crisis-referrals-in-england-double-in-a-year"
+        },
+        {
+          title: "Rising demand not matched by service capacity",
+          description: "Since 2019, there’s been a 600,000 increase in adults using secondary mental health services—but service capacity hasn't kept pace. Youth wait times range from 142 to 359 days.",
+          help: "<strong>How Galea helps:</strong> Galea helps mitigate this bottleneck by capturing and tracking pre-assessment data, enabling clinicians to prepare before first contact and making caseloads more manageable.",
+          date: "2024-10-25",
+          author: "Care Quality Commission",
+          link: "https://www.cqc.org.uk/publications/major-report/state-care/2023-2024/access/mh"
+        },
+        {
+          title: "Over 250,000 children still waiting for mental health support",
+          description: "More than 270,000 children in England are awaiting mental health services—some for over two years. Access varies drastically by region, amplifying inequity.",
+          help: "<strong>How Galea helps:</strong> Galea provides equitable, region-agnostic access to early assessments and support for children and families—reducing delays and identifying high-risk individuals regardless of geography.",
+          date: "2024-03-15",
+          author: "Childrens Comissonioner",
+          link: "https://www.childrenscommissioner.gov.uk/blog/over-a-quarter-of-a-million-children-still-waiting-for-mental-health-support/"
+        },
+        {
+          title: "Young People Are Now So Unhappy That They've Changed A Fundamental Pattern Of Life",
+          description: "According to a working paper from Dartmouth University Professor David Blanchflower and colleagues, the formerly inescapable “U curve” of well-being is now more of an uphill struggle towards happiness.",
+          help: "<strong>How Galea helps:</strong> When young people are struggling with happiness and life satisfaction, Galea offers a way forward. Our platform supports students through self-assessments, helps schools spot patterns across classes or year groups, and gives practitioners the insights they need to intervene early.",
+          date: "2024-07-16",
+          author: "IFLScience",
+          link: "https://www.iflscience.com/young-people-are-now-so-unhappy-that-theyve-changed-a-fundamental-pattern-of-life-75117"
+        }
+      ];
+
+      const grid = document.getElementById("articlesGrid");
+      const empty = document.getElementById("articlesEmpty");
+      const search = document.getElementById("articlesSearch");
+
+      function norm(s){ return String(s || "").toLowerCase().trim(); }
+
+      function formatDateISOToGB(iso){
+        const d = new Date(iso);
+        if (Number.isNaN(d.getTime())) return iso;
+        return d.toLocaleDateString("en-GB", { day: "2-digit", month: "short", year: "numeric" });
+      }
+
+      function matches(a, q){
+        if (!q) return true;
+        const haystack = norm(
+          a.title + " " +
+          a.description + " " +
+          a.author + " " +
+          a.date + " " +
+          a.help
+        );
+        return haystack.includes(q);
+      }
+
+      function render(){
+        const q = norm(search.value);
+
+        const filtered = articles
+          .filter(a => matches(a, q))
+          .sort((a, b) => {
+            const ap = a.pinned ? 1 : 0;
+            const bp = b.pinned ? 1 : 0;
+            if (bp !== ap) return bp - ap; // pinned first
+            return new Date(b.date) - new Date(a.date); // newest next
+          });
+
+        grid.innerHTML = "";
+
+        if (filtered.length === 0){
+          empty.hidden = false;
+          return;
+        }
+        empty.hidden = true;
+
+        filtered.forEach((a) => {
+          const card = document.createElement("article");
+          card.className = "research-card";
+
+          const dateLabel = formatDateISOToGB(a.date);
+
+          card.innerHTML = `
+            <div class="research-card-top">
+              <div class="research-meta">
+                <div class="research-meta-left">
+                  ${a.pinned ? `<span class="research-pill">Pinned</span>` : ``}
+                </div>
+                <span class="research-year">${dateLabel}</span>
+              </div>
+
+              <h3 class="research-title">${a.title}</h3>
+
+              <p class="research-pub">
+                <span>Source:</span> ${a.author}
+              </p>
+
+              <p class="research-auth">
+                ${a.description}
+              </p>
+
+              ${a.help ? `<div class="articles-help">${a.help}</div>` : ``}
+            </div>
+
+            <div class="research-actions">
+              <a class="btn btn-secondary" href="${a.link}" target="_blank" rel="noopener">
+                Read article
+              </a>
+            </div>
+          `;
+
+          grid.appendChild(card);
+        });
+      }
+
+      search.addEventListener("input", render);
+      render();
+    })();
+  </script>
+</body>
+</html>

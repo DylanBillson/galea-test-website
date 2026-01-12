@@ -1,0 +1,75 @@
+/* ================= Quotes ================= */
+
+.quote-rotator{
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: #fff;
+  box-shadow: var(--shadow);
+  padding: 1.25rem;
+}
+
+.quote-rotator .qr-lead{
+  margin: 0 0 .9rem 0;
+  color: var(--grey);
+  font-weight: 850;
+  letter-spacing: -.01em;
+  line-height: 1.5;
+  font-size: 1.05rem;
+}
+
+.quote-rotator .qr-quote-wrap{
+  position: relative;
+  min-height: 3.25rem; /* keeps layout stable during fades */
+}
+
+.quote-rotator .qr-quote{
+  margin: 0;
+  color: var(--grey);
+  line-height: 1.65;
+  font-size: 1rem;
+  opacity: 0;
+  transition: opacity .35s ease;
+}
+
+.quote-rotator .qr-quote.is-visible{
+  opacity: 1;
+}
+
+.quote-rotator .qr-quote::before{
+  content: "“";
+  color: rgba(0,102,204,.85);
+  font-weight: 900;
+}
+
+.quote-rotator .qr-quote::after{
+  content: "”";
+  color: rgba(0,102,204,.85);
+  font-weight: 900;
+}
+
+/* Optional small dots */
+.quote-rotator .qr-dots{
+  margin-top: .85rem;
+  display: inline-flex;
+  gap: .4rem;
+}
+
+.quote-rotator .qr-dot{
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: rgba(62,62,60,.25);
+  border: 1px solid rgba(62,62,60,.18);
+}
+
+.quote-rotator .qr-dot.is-active{
+  background: rgba(0,102,204,.65);
+  border-color: rgba(0,102,204,.35);
+}
+
+/* Reduced motion: no fading/looping feel */
+@media (prefers-reduced-motion: reduce){
+  .quote-rotator .qr-quote{
+    transition: none;
+  }
+}

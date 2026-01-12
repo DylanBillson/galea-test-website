@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Articles, newsletters and updates from Galea." />
+  <title>Blog • Galea</title>
+
+  <link rel="stylesheet" href="/assets/css/main.css" />
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Header include -->
+  <div id="site-header"></div>
+
+  <!-- Page intro band -->
+  <section class="page-intro">
+    <div class="container page-intro-inner">
+      <p class="page-eyebrow">Resources</p>
+      <h1 class="page-title">Blog</h1>
+      <p class="page-intro-text">
+        Product notes, newsletters, and practical writing — kept calm, clear, and human.
+      </p>
+    </div>
+  </section>
+
+  <main id="main">
+<!-- Filters -->
+<section class="section section-alt" id="filters" aria-label="Filter and search posts">
+  <div class="container">
+    <div class="blog-tools">
+      <h2 class="section-title" style="margin-bottom:.25rem;">Browse</h2>
+      <p class="section-subtext" style="margin:0;">
+        Search or filter by type. Everything is in one place.
+      </p>
+
+      <div class="blog-chip-row" role="group" aria-label="Content filters">
+        <button class="blog-chip is-active" type="button" data-filter="all">All</button>
+        <button class="blog-chip" type="button" data-filter="blog">Blog</button>
+        <button class="blog-chip" type="button" data-filter="newsletter">Newsletter</button>
+        <button class="blog-chip" type="button" data-filter="update">Product update</button>
+      </div>
+
+      <div class="blog-search">
+        <label class="sr-only" for="blogSearch">Search posts</label>
+        <input id="blogSearch" class="blog-input" type="search" placeholder="Search (e.g., benchmarking, privacy…)" />
+      </div>
+    </div>
+  </div>
+</section>
+
+    <!-- One grid -->
+    <section class="section" id="browse" aria-label="All posts">
+      <div class="container">
+        <div class="blog-grid" id="blogGridAll">
+          <!-- Featured (just the first card) -->
+          <article class="blog-card blog-card-featured" data-type="newsletter" data-tags="marketing revops campaign benchmarking">
+            <a class="blog-card-link" href="/resources/blog/newsletters/2026-01-06-marketing-summary/">
+              <div class="blog-card-top">
+                <div class="blog-card-meta">
+                  <span class="blog-pill">Featured</span>
+                  <span class="blog-dot" aria-hidden="true"></span>
+                  <time datetime="2026-01-06">6 Jan 2026</time>
+                  <span class="blog-dot" aria-hidden="true"></span>
+                  <span>Newsletter</span>
+                </div>
+
+                <h2 class="blog-card-title">Marketing all-team summary — January 2026</h2>
+                <p class="blog-card-excerpt">
+                  Priorities for sales enablement, campaign planning, and the site migration to GitHub Pages.
+                </p>
+              </div>
+
+              <div class="blog-tag-row" aria-label="Tags">
+                <span class="blog-tag">Campaigns</span>
+                <span class="blog-tag">Benchmarking</span>
+                <span class="blog-tag">Website</span>
+              </div>
+            </a>
+          </article>
+
+          <!-- Other cards -->
+          <article class="blog-card" data-type="blog" data-tags="early support engagement stigma-free">
+            <a class="blog-card-link" href="/resources/blog/posts/2026/09-01-2026/">
+              <div class="blog-card-top">
+                <div class="blog-card-meta">
+                  <time datetime="2025-12-12">09 Jan 2026</time>
+                  <span class="blog-dot" aria-hidden="true"></span>
+                  <span>Blog</span>
+                </div>
+                <h3 class="blog-card-title">Why not test a post?</h3>
+                <p class="blog-card-excerpt">
+                  Reactive support misses the early moments where small interventions prevent bigger harm.
+                </p>
+              </div>
+              <div class="blog-tag-row" aria-label="Tags">
+                <span class="blog-tag">Workplace</span>
+                <span class="blog-tag">Engagement</span>
+              </div>
+            </a>
+          </article>
+
+          <article class="blog-card" data-type="update" data-tags="product reporting metrics">
+            <a class="blog-card-link" href="/resources/blog/updates/benchmarking-preview/">
+              <div class="blog-card-top">
+                <div class="blog-card-meta">
+                  <time datetime="2025-11-28">28 Nov 2025</time>
+                  <span class="blog-dot" aria-hidden="true"></span>
+                  <span>Product update</span>
+                </div>
+                <h3 class="blog-card-title">Benchmarking: a first look</h3>
+                <p class="blog-card-excerpt">
+                  A preview of how benchmarking supports safer comparisons and clearer population insight.
+                </p>
+              </div>
+              <div class="blog-tag-row" aria-label="Tags">
+                <span class="blog-tag">Reporting</span>
+                <span class="blog-tag">Metrics</span>
+              </div>
+            </a>
+          </article>
+
+          <article class="blog-card" data-type="newsletter" data-tags="roadmap product changes">
+            <a class="blog-card-link" href="/resources/blog/newsletters/2026-01-galea-updates/">
+              <div class="blog-card-top">
+                <div class="blog-card-meta">
+                  <time datetime="2026-01-01">1 Jan 2026</time>
+                  <span class="blog-dot" aria-hidden="true"></span>
+                  <span>Newsletter</span>
+                </div>
+                <h3 class="blog-card-title">Looking ahead to 2026</h3>
+                <p class="blog-card-excerpt">
+                  What’s changing, what’s coming, and how we’re keeping the platform human-first.
+                </p>
+              </div>
+              <div class="blog-tag-row" aria-label="Tags">
+                <span class="blog-tag">Roadmap</span>
+                <span class="blog-tag">Product</span>
+              </div>
+            </a>
+          </article>
+
+          <article class="blog-card" data-type="blog" data-tags="ethics values human-first">
+            <a class="blog-card-link" href="/resources/blog/posts/human-first-by-design/">
+              <div class="blog-card-top">
+                <div class="blog-card-meta">
+                  <time datetime="2025-10-17">17 Oct 2025</time>
+                  <span class="blog-dot" aria-hidden="true"></span>
+                  <span>Blog</span>
+                </div>
+                <h3 class="blog-card-title">Human-first, by design</h3>
+                <p class="blog-card-excerpt">
+                  Practical choices that make digital support feel safer, calmer, and more respectful.
+                </p>
+              </div>
+              <div class="blog-tag-row" aria-label="Tags">
+                <span class="blog-tag">Ethics</span>
+                <span class="blog-tag">Design</span>
+              </div>
+            </a>
+          </article>
+        </div>
+
+        <div class="blog-empty" id="blogEmpty" hidden>
+          <p class="blog-empty-title">No matches found.</p>
+          <p class="blog-empty-text">Try a different term, or clear the filters to browse everything.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer include -->
+  <div id="site-footer"></div>
+
+  <script src="/assets/js/includes.js"></script>
+
+  <!-- Simple filter + search (page-only) -->
+  <script>
+    (function () {
+      const chips = Array.from(document.querySelectorAll(".blog-chip"));
+      const search = document.getElementById("blogSearch");
+      const clearBtn = document.getElementById("blogClear");
+      const empty = document.getElementById("blogEmpty");
+      const cards = Array.from(document.querySelectorAll(".blog-card"));
+
+      let activeType = "all";
+
+      function norm(s){ return String(s || "").toLowerCase().trim(); }
+
+      function cardText(card){
+        const title = card.querySelector(".blog-card-title")?.textContent || "";
+        const excerpt = card.querySelector(".blog-card-excerpt")?.textContent || "";
+        const tags = card.getAttribute("data-tags") || "";
+        const type = card.getAttribute("data-type") || "";
+        return norm(title + " " + excerpt + " " + tags + " " + type);
+      }
+
+      function apply(){
+        const q = norm(search?.value || "");
+        let visible = 0;
+
+        cards.forEach((card) => {
+          const type = card.getAttribute("data-type") || "";
+          const typeOk = (activeType === "all") || (type === activeType);
+          const qOk = (!q) || cardText(card).includes(q);
+
+          const show = typeOk && qOk;
+          card.classList.toggle("is-hidden", !show);
+          if (show) visible += 1;
+        });
+
+        if (empty) empty.hidden = visible !== 0;
+      }
+
+      chips.forEach((chip) => {
+        chip.addEventListener("click", () => {
+          chips.forEach(c => c.classList.remove("is-active"));
+          chip.classList.add("is-active");
+          activeType = chip.dataset.filter || "all";
+          apply();
+        });
+      });
+
+      search?.addEventListener("input", apply);
+
+      clearBtn?.addEventListener("click", () => {
+        if (search) search.value = "";
+        activeType = "all";
+        chips.forEach(c => c.classList.toggle("is-active", c.dataset.filter === "all"));
+        apply();
+        search?.focus();
+      });
+
+      apply();
+    })();
+  </script>
+</body>
+</html>

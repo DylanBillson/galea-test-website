@@ -1,0 +1,249 @@
+/* ================= Flipcards ================= */
+
+.flipcards {}
+
+/* Heading */
+.flipcards .flipcards-head{
+  text-align: center;
+  margin: 2rem 0 1rem 0;
+}
+
+.flipcards .flipcards-title{
+  margin: 0;
+  font-size: clamp(1.35rem, 2.2vw, 1.9rem);
+  letter-spacing: -0.02em;
+  color: var(--grey);
+}
+
+/* Grid */
+.flipcards .flipcards-grid{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  align-items: stretch;
+}
+
+@media (max-width: 980px){
+  .flipcards .flipcards-grid{
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ================= Card Button ================= */
+
+.flipcards .flipcard{
+  appearance: none;
+  border: none;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+
+  transition: transform .18s ease;
+}
+
+.flipcards .flipcard:hover{
+  transform: translateY(-2px);
+}
+
+.flipcards .flipcard:focus-visible{
+  outline: none;
+}
+
+.flipcards .flipcard:focus-visible .flipcard-inner{
+  outline: 3px solid rgba(0,102,204,.25);
+  outline-offset: 4px;
+}
+
+/* ================= Card Shell ================= */
+
+.flipcards .flipcard-inner{
+  position: relative;
+  width: 100%;
+  min-height: 290px;
+
+  border-radius: var(--radius);
+  overflow: hidden;
+
+  background: linear-gradient(135deg, var(--blue), var(--blue-2));
+  box-shadow: var(--shadow);
+
+  transition: box-shadow .2s ease;
+}
+
+.flipcards .flipcard:hover .flipcard-inner{
+  box-shadow: 0 18px 45px rgba(0,0,0,.12);
+}
+
+/* ================= Faces (fade swap only) ================= */
+
+.flipcards .flipcard-front,
+.flipcards .flipcard-back{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+
+  padding: 1.05rem;
+
+  display: flex;
+  flex-direction: column;
+
+  color: #fff;
+
+  transition: opacity .18s ease, visibility .18s ease;
+}
+
+/* Shared top row so titles align perfectly */
+.flipcards .flipcard-toprow{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .75rem;
+  margin-bottom: .85rem; /* ensures image/text start same place on both faces */
+}
+
+/* Shared title styling for BOTH faces */
+.flipcards .flipcard-title{
+  margin: 0;
+  font-weight: 900;
+  letter-spacing: -0.01em;
+  font-size: 1.12rem;
+  line-height: 1.2;
+  color: #fff;
+}
+
+/* Default: front visible */
+.flipcards .flipcard-front{
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  z-index: 2;
+
+  justify-content: space-between;
+}
+
+/* Default: back hidden */
+.flipcards .flipcard-back{
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  z-index: 1;
+
+  justify-content: flex-start;
+}
+
+/* Active: show back */
+.flipcards .flipcard.is-flipped .flipcard-front{
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.flipcards .flipcard.is-flipped .flipcard-back{
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  z-index: 2;
+}
+
+/* Force readable back text even if global styles fight you */
+.flipcards .flipcard-back,
+.flipcards .flipcard-back *{
+  color: #fff !important;
+}
+
+/* ================= “Press me” hint ================= */
+
+.flipcards .flipcard-hint{
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  font-weight: 800;
+  white-space: nowrap;
+  color: rgba(255,255,255,.92);
+  opacity: .92;
+  font-size: .95rem;
+}
+
+.flipcards .flipcard-hint::after{
+  content: "→";
+  transition: transform .15s ease;
+}
+
+.flipcards .flipcard:hover .flipcard-hint::after{
+  transform: translateX(4px);
+}
+
+/* ================= Image (square + transparent) ================= */
+
+.flipcards .flipcard-media{
+  display: grid;
+  place-items: center;
+
+  aspect-ratio: 1 / 1;
+  max-height: 200px;
+
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  overflow: visible;
+}
+
+.flipcards .flipcard-media img{
+  width: 100%;
+  height: 100%;
+  max-height: 200px;
+
+  object-fit: contain;
+  background: transparent;
+  display: block;
+}
+
+/* ================= Back content sizing ================= */
+
+.flipcards .flipcard-back-body{
+  display: flex;
+  flex-direction: column;
+  gap: .65rem;
+}
+
+/* Bigger, more readable */
+.flipcards .flipcard-back p{
+  margin: 0;
+  font-size: 15.5px;
+  font-weight:600;
+  line-height: 1.7;
+  color: rgba(255,255,255,.95) !important;
+}
+
+.flipcards .flipcard-back ul{
+  margin: 0;
+  padding-left: 1.1rem;
+  font-size: 15.5px;
+  line-height: 1.7;
+  color: rgba(255,255,255,.95) !important;
+}
+
+.flipcards .flipcard-back li{
+  margin: .35rem 0;
+  color: rgba(255,255,255,.95) !important;
+  font-weight:600;
+}
+
+/* ================= Reduced Motion ================= */
+
+@media (prefers-reduced-motion: reduce){
+  .flipcards .flipcard,
+  .flipcards .flipcard-inner,
+  .flipcards .flipcard-front,
+  .flipcards .flipcard-back,
+  .flipcards .flipcard-hint::after{
+    transition: none;
+  }
+  .flipcards .flipcard:hover{
+    transform: none;
+  }
+}

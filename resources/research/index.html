@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Research • Galea</title>
+
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <meta name="description" content="Academic papers and supporting research behind Galea’s approach." />
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div id="site-header"></div>
+
+  <!-- Page intro band -->
+  <section class="page-intro">
+    <div class="container page-intro-inner">
+      <p class="page-eyebrow">Resources</p>
+      <h1 class="page-title">Research</h1>
+      <p class="page-intro-text">
+        Academic papers and supporting research behind Galea’s approach.
+      </p>
+    </div>
+  </section>
+
+  <main id="main">
+    <!-- Search -->
+    <section class="section section-alt" id="search" aria-label="Search research papers">
+      <div class="container">
+        <div class="research-tools">
+          <div>
+            <h2 class="section-title" style="margin-bottom:.25rem;">Search papers</h2>
+            <p class="section-subtext" style="margin:0;">
+              Search by title, publication, author, or year.
+            </p>
+          </div>
+
+          <div class="research-search">
+            <label class="sr-only" for="researchSearch">Search papers</label>
+            <input
+              id="researchSearch"
+              class="research-input"
+              type="search"
+              placeholder="Search (e.g., risk, GRiST, Buckingham, 2016…)">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Grid -->
+    <section class="section" id="papers" aria-label="Research papers">
+      <div class="container">
+        <div class="research-grid" id="researchGrid"></div>
+
+        <div class="research-empty" id="researchEmpty" hidden>
+          <p class="research-empty-title">No matches found.</p>
+          <p class="research-empty-text">Try a different term (title, author, publication, or year).</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="/assets/js/includes.js"></script>
+
+  <script>
+    (function () {
+      const publications = [
+        {
+          title: "Reducing care calls to increase customer satisfaction",
+          publicationtitle: "Ministry of Housing, Communities & Local Government",
+          date: "2019",
+          author: "C. D. Buckingham",
+          link: "/resources/research/papers/ldf-research.pdf"
+        },
+        {
+          title: "Uses and attitudes of old and oldest adults towards self-monitoring health systems",
+          publicationtitle: "Pervasive Health ’19: EAI International Conference on Pervasive Computing Technologies for Healthcare",
+          date: "2019",
+          author: "D’Haeseleer, I., Gerling, K., Vanrumste, B., Schreurs, D., Buckingham, C., & Abeele, V. V",
+          link: "/resources/research/papers/DHaeseleer-et-al-2019-UsesAttitudesOlderAdultsSelf-MonitoringHealthSystems.pdf"
+        },
+        {
+          title: "A Deep Evolutionary Approach to Bioinspired Classifier Optimisation for Brain-Machine Interaction",
+          publicationtitle: "Complexity",
+          date: "2019",
+          author: "Jordan J. Bird, Diego R. Faria, Luis J. Manso, Anikó Ekárt, and Christopher D. Buckingham",
+          link: "/resources/research/papers/bird-evo-class-brain-machine-2019_0.pdf"
+        },
+        {
+          title: "Emotion Recognition using Spatiotemporal Features from Facial Expression Landmarks",
+          publicationtitle: "2018 International Conference on Intelligent Systems (IS), IEEE",
+          date: "2018",
+          author: "Hamid Golzadeh, Diego R. Faria, Luis J. Manso, Anikó Ekárt, and Christopher D. Buckingham",
+          link: "/resources/research/papers/facial-hg-df-lm-ae-cb-ieee-is2018-published.pdf"
+        },
+        {
+          title: "Capturing Human Intelligence for Modelling Cognitive-Based Clinical Decision Support Agents",
+          publicationtitle: "Artificial Life and Intelligent Agents: Second International Symposium, ALIA 2016, Birmingham, UK, June 14-15, 2016, Revised Selected Papers",
+          date: "2018",
+          author: "A. Rezaei-Yazdi and C.D. Buckingham",
+          link: "/resources/research/papers/ALIA-published.pdf"
+        },
+        {
+          title: "Policy based generic autonomic adapter for a context-aware social-collaborative system",
+          publicationtitle: "2018 International Conference on Intelligent Systems and Computer Vision (ISCV), IEEE",
+          date: "2018",
+          author: "Nazmul Hussain, Hai Wang, and Christopher Buckingham",
+          link: "/resources/research/papers/nazmul-cdb-hai-ieee-AA-ISCV-2018.pdf"
+        },
+        {
+          title: "Developing a Hierarchical Fuzzy Rule-based Model with Weighted Linguistic Rules: A Case Study of Water Pipes Condition Prediction",
+          publicationtitle: "Computing Conference, 2017: IEEE Xplore",
+          date: "2018",
+          author: "Nasser Amaitik and Christopher Buckingham",
+          link: "/resources/research/papers/fuzzy-pipes-amaitik-buckingham-2017.pdf"
+        },
+        {
+          title: "Introducing a pilot data collection model for real-time evaluation of data redundancy",
+          publicationtitle: "Procedia Computer Science",
+          date: "2016",
+          author: "Ali Rezaei-Yazdi and Christopher Buckingham",
+          link: "/resources/research/papers/ali-cdb-procedia-computer-science-2016.pdf"
+        },
+        {
+          title: "Moderating the Influence of Current Intention to Improve Suicide Risk Prediction",
+          publicationtitle: "AMIA Annual Symposium Proceedings, 2016",
+          date: "2016",
+          author: "N. Zaher and C.D.Buckingham",
+          link: "/resources/research/papers/zaher-cdb-amia-2017.pdf",
+          pinned: true
+        },
+        {
+          title: "Types of Computational Self-awareness And How We Might Implement Them",
+          publicationtitle: "CODES/ISSS ’16, October 01-07 2016, Pittsburgh, PA, USA",
+          date: "2016",
+          author: "Peter Lewis",
+          link: "/resources/research/papers/lewis-acm-pittsburgh-abstract-2016.pdf"
+        },
+        {
+          title: "Attitudes of Older Adults towards Self-Assessment of Mental Health, Safety and Wellbeing",
+          publicationtitle: "Engineering4Society 2016: Raising awareness for the societal role of engineering",
+          date: "2016",
+          author: "Ine D'Haeseleer et al",
+          link: "/resources/research/papers/AttitudesOlderAdultsTowardsSelfAssessmentMentalHealthSafetyWellbeing_a4paper.pdf"
+        },
+        {
+          title: "Living well to the end: A phenomenological analysis of life in extra care housing",
+          publicationtitle: "International Journal of Qualitative Studies on Health and Well-being",
+          date: "2016",
+          author: "Rachel l. Shaw, Karen West, Barbara Hagger, & Carol a. Holland.",
+          link: "/resources/research/papers/living-well-to-end-shaw-2016.pdf"
+        },
+        {
+          title: "Mental health risk, safety, and the lost soul",
+          publicationtitle: "Care of the Soul in Illness and Health",
+          date: "2016",
+          author: "C.D.Buckingham, A.Adams, & A.Ahmed",
+          link: "/resources/research/papers/pardubice-cdb-2016.pdf"
+        },
+        {
+          title: "Integrating service user and practitioner expertise within a web-based system for collaborative mental-health risk and safety management",
+          publicationtitle: "Patient Education and Counseling",
+          date: "2015",
+          author: "C.D.Buckingham et al",
+          link: "/resources/research/papers/mygrace-pec-2015.pdf",
+          pinned: true
+        },
+        {
+          title: "Assessing the economic returns of engineering research and post graduate training in the UK",
+          publicationtitle: "N/A",
+          date: "2015",
+          author: "Technopolis",
+          link: "/resources/research/papers/EconomicBenefitsOfEngineeringReportMarch2015A.pdf"
+        },
+        {
+          title: "Understanding Data Collection Behaviour of Mental Health Practitioners",
+          publicationtitle: "Innovation in Medicine and Healthcare",
+          date: "2014",
+          author: "Rezaei-Yazdi and Buckingham",
+          link: "/resources/research/papers/ali-cdb-InMed_2014.pdf"
+        },
+        {
+          title: "Handling Varying Amounts of Missing Data when Classifying Mental-Health Risk Levels",
+          publicationtitle: "Innovation in Medicine and Healthcare",
+          date: "2014",
+          author: "Saleh, S. and Buckingham, C.D.",
+          link: "/resources/research/papers/sherine-cdb-InMed_2014.pdf"
+        },
+        {
+          title: "myGRiST presentation for EACH 2014",
+          publicationtitle: "Integrating patients’ and clinical mental health expertise within a single online decision support system: myGRiST",
+          date: "2014",
+          author: "C.D.Buckingham",
+          link: "/resources/research/papers/grist-each2014-web-view.pdf"
+        },
+        {
+          title: "Designing multiple user perspectives and functionality for clinical decision support systems",
+          publicationtitle: "IEEE Xplore",
+          date: "2013",
+          author: "C.D. Buckingham, A. Ahmed, & A. Adams",
+          link: "/resources/research/papers/grist-fedcsis-2013-published.pdf",
+          pinned: true
+        },
+        {
+          title: "Coding instructions for the NIH-ESRC consultations",
+          publicationtitle: "GRiST coding scheme and rules for NIH-ESRC stage 2 patient-doctor consultations",
+          date: "2013",
+          author: "C.D.Buckingham and A.E.Adams",
+          link: "/resources/research/papers/nih-esrc-stage2-coding.pdf"
+        },
+        {
+          title: "Investigating mental health risk assessment in primary care and the potential role of a structured decision support tool, GRiST",
+          publicationtitle: "Mental Health in Family Medicine",
+          date: "2012",
+          author: "Vail, Adams, Gilbert, Nettleingham, & Buckingham",
+          link: "/resources/research/papers/MHFM-09-057-vail-2012.pdf"
+        },
+        {
+          title: "The GRIST web-based decision support system for mental-health risk assessment and management",
+          publicationtitle: "First BCS Health in Wales/ehi2 joint Workshop",
+          date: "2011",
+          author: "C.D.Buckingham and A.Adams",
+          link: "/resources/research/papers/grist-ita-workshop-2011.pdf"
+        },
+        {
+          title: "Examining the relationship between risk assessment and risk management in mental health",
+          publicationtitle: "Journal of Psychiatric and Mental Health Nursing",
+          date: "2011",
+          author: "E. A. Gilbert, A. Adams, & C. D. Buckingham",
+          link: "/resources/research/papers/j-psych-mh-nurse-final-proof.pdf"
+        },
+        {
+          title: "Graphical Modelling in Mental Health Risk Assessments",
+          publicationtitle: "COGNITIVE 2010 : The Second International Conference on Advanced Cognitive Technologies and Applications",
+          date: "2010",
+          author: "O. Obembe and C. D. Buckingham",
+          link: "/resources/research/papers/cognitive_2010_3_30_30039.pdf"
+        },
+        {
+          title: "A Method for Automatically Eliciting node Weights in a Hierarchical Knowledge-Based Structure for Reasoning with Uncertainty",
+          publicationtitle: "International Journal On Advances in Software",
+          date: "2009",
+          author: "S. E. Hegazy and C. D. Buckingham",
+          link: "/resources/research/papers/hegazy-cdb-iaria-09.pdf"
+        },
+        {
+          title: "Cues and knowledge structures used by mental-health professionals when making risk assessments",
+          publicationtitle: "Journal of Mental Health",
+          date: "2008",
+          author: "Christopher D. Buckingham, Ann Adams and Chris Mace",
+          link: "/resources/research/papers/jmh-published.pdf",
+          pinned: true
+        },
+        {
+          title: "Using XML and XSLT for flexible elicitation of mental-health risk knowledge",
+          publicationtitle: "Medical Informatics & The Internet in Medicine",
+          date: "2007",
+          author: "C. D. BUCKINGHAM, A. AHMED & A. E. ADAMS",
+          link: "/resources/research/papers/medinfo-07-cdb-published_0.pdf"
+        },
+        {
+          title: "Improving mental health risk assessment using web-based decision support",
+          publicationtitle: "Health Care Risk Report",
+          date: "2007",
+          author: "C.D.Buckingham",
+          link: "/resources/research/papers/hcrr-published_0.pdf"
+        },
+        {
+          title: "Psychological cue use and implications for a clinical decision support system",
+          publicationtitle: "Medical Informatics and the Internet in Medicine",
+          date: "2002",
+          author: "C. D. BUCKINGHAM",
+          link: "/resources/research/papers/medinfo-published-02.pdf",
+          pinned: true
+        },
+        {
+          title: "Representing the assessment process for psychodynamic psychotherapy within a computerized model of human classification.",
+          publicationtitle: "The British Journal of Medical Psychology",
+          date: "1997",
+          author: "C.D.Buckingham & J. Birtle",
+          link: "/resources/research/papers/bjmp-paper.pdf"
+        }
+      ];
+
+      const grid = document.getElementById("researchGrid");
+      const empty = document.getElementById("researchEmpty");
+      const search = document.getElementById("researchSearch");
+
+      function norm(s){ return String(s || "").toLowerCase().trim(); }
+
+      function yearValue(d){
+        const y = parseInt(String(d).replace(/[^\d]/g, ""), 10);
+        return Number.isFinite(y) ? y : 0;
+      }
+
+      function matches(pub, q){
+        if (!q) return true;
+        const haystack = norm(
+          pub.title + " " +
+          pub.publicationtitle + " " +
+          pub.author + " " +
+          pub.date
+        );
+        return haystack.includes(q);
+      }
+
+      function render(){
+        const q = norm(search.value);
+        const filtered = publications
+          .filter(p => matches(p, q))
+          .sort((a, b) => {
+            const ap = a.pinned ? 1 : 0;
+            const bp = b.pinned ? 1 : 0;
+            if (bp !== ap) return bp - ap;                 // pinned first
+            return yearValue(b.date) - yearValue(a.date);  // then newest
+          });
+
+        grid.innerHTML = "";
+
+        if (filtered.length === 0){
+          empty.hidden = false;
+          return;
+        }
+        empty.hidden = true;
+
+        filtered.forEach((pub) => {
+          const card = document.createElement("article");
+          card.className = "research-card";
+
+          card.innerHTML = `
+            <div class="research-card-top">
+              <div class="research-meta">
+                <div class="research-meta-left">
+                  ${pub.pinned ? `<span class="research-pill">Pinned</span>` : ``}
+                </div>
+                <span class="research-year">${yearValue(pub.date)}</span>
+              </div>
+
+              <h3 class="research-title">${pub.title}</h3>
+              <p class="research-pub"><span>Publication:</span> ${pub.publicationtitle}</p>
+              <p class="research-auth"><span>Author:</span> ${pub.author}</p>
+            </div>
+
+            <div class="research-actions">
+              <a class="btn btn-secondary" href="${pub.link}" target="_blank" rel="noopener">
+                Open PDF
+              </a>
+            </div>
+          `;
+
+          grid.appendChild(card);
+        });
+      }
+
+      search.addEventListener("input", render);
+      render();
+    })();
+  </script>
+</body>
+</html>

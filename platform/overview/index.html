@@ -180,6 +180,12 @@
           </div>
         </div>
       </div>
+      <!-- Conditions module include hook (kept) -->
+      <section class="section section" id="conditions">
+        <div class="container">
+          <div data-partial="/components/conditions.html"></div>
+        </div>
+      </section>
     </section>
 
     <!-- CLINICAL ASSESSMENTS (compact + module hook) -->
@@ -205,12 +211,6 @@
           </div>
 
           <div class="stack">
-            <!-- Flip cards module hook (kept as include) -->
-            <div class="card">
-              <h3 class="card-title">Where this fits in the care journey</h3>
-              <div data-partial="/files/flipcards-care-journey.html"></div>
-            </div>
-
             <div class="card compact">
               <h3 class="card-title">Use it in</h3>
               <ul class="bullets">
@@ -272,13 +272,40 @@
             </div>
           </div>
         </div>
+        <section
+  class="flipcards"
+  data-flipcards='{
+    "heading": "Where this fits in the care journey",
+    "cards": [
+      {
+        "frontTitle": "Impact reporting",
+        "image": "/assets/img/flipcards/flipcard-group-level-reporting.webp",
+        "imageAlt": "Illustration representing impact reporting",
+        "backTitle": "Impact reporting",
+        "backText": "View outcomes by programme, location, demographic, or theme — helping you monitor needs, document success, and strengthen funding proposals."
+      },
+      {
+        "frontTitle": "Printable summaries",
+        "image": "/assets/img/flipcards/flipcard-printable-summeries.webp",
+        "imageAlt": "Illustration representing printable summaries",
+        "backTitle": "Printable summaries",
+        "backText": "Give clients something tangible they can take to a GP, therapist, or keep for themselves — with consent-based sharing options."
+      },
+      {
+        "frontTitle": "White labelling",
+        "image": "/assets/img/flipcards/flipcard-white-labeling.webp",
+        "imageAlt": "Illustration representing white labelling",
+        "backTitle": "White labelling",
+        "backList": [
+          "Your organisation’s branding",
+          "Preferred language and support themes",
+          "Integrated access across teams or partnership models"
+        ]
+      }
+    ]
+  }'
+  ></section>
       </div>
-    </section>
-
-    <!-- Conditions module include hook (kept) -->
-    <section class="section section-alt" id="conditions">
-      <div class="container">
-        <div data-partial="/components/conditions.html"></div>
       </div>
     </section>
 
@@ -308,11 +335,24 @@
     </section>
 
   </main>
+  
+<div
+  data-cta='{
+    "eyebrow": "Next step",
+    "title": "Ready to see what Galea could do for you?",
+    "text": "Short supportive line that changes per page.",
+    "primary": { "label": "Book a demo", "href": "/contact/" },
+    "secondary": { "label": "Explore the platform", "href": "/platform/overview/" },
+    "logoSrc": "/assets/img/cta/Galea-A-logo.svg"
+  }'
+></div>
 
   <!-- Footer include -->
   <div id="site-footer"></div>
 
   <script src="/assets/js/includes.js"></script>
+  <script src="/assets/js/flipcards.js"></script>
+  <script src="/assets/js/cta.js" defer></script>
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       if (typeof loadDataPartials === "function") loadDataPartials();
