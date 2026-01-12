@@ -21,147 +21,40 @@
       <p class="page-eyebrow">Resources</p>
       <h1 class="page-title">Blog</h1>
       <p class="page-intro-text">
-        Product notes, newsletters, and practical writing — kept calm, clear, and human.
+        Product updates, newsletters, and articles by our team.
       </p>
     </div>
   </section>
 
   <main id="main">
-<!-- Filters -->
-<section class="section section-alt" id="filters" aria-label="Filter and search posts">
-  <div class="container">
-    <div class="blog-tools">
-      <h2 class="section-title" style="margin-bottom:.25rem;">Browse</h2>
-      <p class="section-subtext" style="margin:0;">
-        Search or filter by type. Everything is in one place.
-      </p>
+    <!-- Filters -->
+    <section class="section section-alt" id="filters" aria-label="Filter and search posts">
+      <div class="container">
+        <div class="blog-tools">
+          <h2 class="section-title" style="margin-bottom:.25rem;">Browse</h2>
+          <p class="section-subtext" style="margin:0;">
+            Search or filter by type. Everything is in one place.
+          </p>
 
-      <div class="blog-chip-row" role="group" aria-label="Content filters">
-        <button class="blog-chip is-active" type="button" data-filter="all">All</button>
-        <button class="blog-chip" type="button" data-filter="blog">Blog</button>
-        <button class="blog-chip" type="button" data-filter="newsletter">Newsletter</button>
-        <button class="blog-chip" type="button" data-filter="update">Product update</button>
-      </div>
+          <div class="blog-chip-row" role="group" aria-label="Content filters">
+            <button class="blog-chip is-active" type="button" data-filter="all">All</button>
+            <button class="blog-chip" type="button" data-filter="blog">Blog</button>
+            <button class="blog-chip" type="button" data-filter="newsletter">Newsletter</button>
+            <button class="blog-chip" type="button" data-filter="update">Product update</button>
+          </div>
 
-      <div class="blog-search">
-        <label class="sr-only" for="blogSearch">Search posts</label>
-        <input id="blogSearch" class="blog-input" type="search" placeholder="Search (e.g., benchmarking, privacy…)" />
+          <div class="blog-search">
+            <label class="sr-only" for="blogSearch">Search posts</label>
+            <input id="blogSearch" class="blog-input" type="search" placeholder="Search (e.g., benchmarking, privacy…)" />
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
     <!-- One grid -->
     <section class="section" id="browse" aria-label="All posts">
       <div class="container">
-        <div class="blog-grid" id="blogGridAll">
-          <!-- Featured (just the first card) -->
-          <article class="blog-card blog-card-featured" data-type="newsletter" data-tags="marketing revops campaign benchmarking">
-            <a class="blog-card-link" href="/resources/blog/newsletters/2026-01-06-marketing-summary/">
-              <div class="blog-card-top">
-                <div class="blog-card-meta">
-                  <span class="blog-pill">Featured</span>
-                  <span class="blog-dot" aria-hidden="true"></span>
-                  <time datetime="2026-01-06">6 Jan 2026</time>
-                  <span class="blog-dot" aria-hidden="true"></span>
-                  <span>Newsletter</span>
-                </div>
-
-                <h2 class="blog-card-title">Marketing all-team summary — January 2026</h2>
-                <p class="blog-card-excerpt">
-                  Priorities for sales enablement, campaign planning, and the site migration to GitHub Pages.
-                </p>
-              </div>
-
-              <div class="blog-tag-row" aria-label="Tags">
-                <span class="blog-tag">Campaigns</span>
-                <span class="blog-tag">Benchmarking</span>
-                <span class="blog-tag">Website</span>
-              </div>
-            </a>
-          </article>
-
-          <!-- Other cards -->
-          <article class="blog-card" data-type="blog" data-tags="early support engagement stigma-free">
-            <a class="blog-card-link" href="/resources/blog/posts/2026/09-01-2026/">
-              <div class="blog-card-top">
-                <div class="blog-card-meta">
-                  <time datetime="2025-12-12">09 Jan 2026</time>
-                  <span class="blog-dot" aria-hidden="true"></span>
-                  <span>Blog</span>
-                </div>
-                <h3 class="blog-card-title">Why not test a post?</h3>
-                <p class="blog-card-excerpt">
-                  Reactive support misses the early moments where small interventions prevent bigger harm.
-                </p>
-              </div>
-              <div class="blog-tag-row" aria-label="Tags">
-                <span class="blog-tag">Workplace</span>
-                <span class="blog-tag">Engagement</span>
-              </div>
-            </a>
-          </article>
-
-          <article class="blog-card" data-type="update" data-tags="product reporting metrics">
-            <a class="blog-card-link" href="/resources/blog/updates/benchmarking-preview/">
-              <div class="blog-card-top">
-                <div class="blog-card-meta">
-                  <time datetime="2025-11-28">28 Nov 2025</time>
-                  <span class="blog-dot" aria-hidden="true"></span>
-                  <span>Product update</span>
-                </div>
-                <h3 class="blog-card-title">Benchmarking: a first look</h3>
-                <p class="blog-card-excerpt">
-                  A preview of how benchmarking supports safer comparisons and clearer population insight.
-                </p>
-              </div>
-              <div class="blog-tag-row" aria-label="Tags">
-                <span class="blog-tag">Reporting</span>
-                <span class="blog-tag">Metrics</span>
-              </div>
-            </a>
-          </article>
-
-          <article class="blog-card" data-type="newsletter" data-tags="roadmap product changes">
-            <a class="blog-card-link" href="/resources/blog/newsletters/2026-01-galea-updates/">
-              <div class="blog-card-top">
-                <div class="blog-card-meta">
-                  <time datetime="2026-01-01">1 Jan 2026</time>
-                  <span class="blog-dot" aria-hidden="true"></span>
-                  <span>Newsletter</span>
-                </div>
-                <h3 class="blog-card-title">Looking ahead to 2026</h3>
-                <p class="blog-card-excerpt">
-                  What’s changing, what’s coming, and how we’re keeping the platform human-first.
-                </p>
-              </div>
-              <div class="blog-tag-row" aria-label="Tags">
-                <span class="blog-tag">Roadmap</span>
-                <span class="blog-tag">Product</span>
-              </div>
-            </a>
-          </article>
-
-          <article class="blog-card" data-type="blog" data-tags="ethics values human-first">
-            <a class="blog-card-link" href="/resources/blog/posts/human-first-by-design/">
-              <div class="blog-card-top">
-                <div class="blog-card-meta">
-                  <time datetime="2025-10-17">17 Oct 2025</time>
-                  <span class="blog-dot" aria-hidden="true"></span>
-                  <span>Blog</span>
-                </div>
-                <h3 class="blog-card-title">Human-first, by design</h3>
-                <p class="blog-card-excerpt">
-                  Practical choices that make digital support feel safer, calmer, and more respectful.
-                </p>
-              </div>
-              <div class="blog-tag-row" aria-label="Tags">
-                <span class="blog-tag">Ethics</span>
-                <span class="blog-tag">Design</span>
-              </div>
-            </a>
-          </article>
-        </div>
+        <div class="blog-grid" id="blogGridAll"></div>
 
         <div class="blog-empty" id="blogEmpty" hidden>
           <p class="blog-empty-title">No matches found.</p>
@@ -176,64 +69,166 @@
 
   <script src="/assets/js/includes.js"></script>
 
-  <!-- Simple filter + search (page-only) -->
+  <!-- Blog hub: data-driven render (like Research / Articles) -->
   <script>
     (function () {
-      const chips = Array.from(document.querySelectorAll(".blog-chip"));
-      const search = document.getElementById("blogSearch");
-      const clearBtn = document.getElementById("blogClear");
+      /**
+       * Types supported by filters:
+       * - "blog"
+       * - "newsletter"
+       * - "update"
+       *
+       * To feature a post: set featured: true
+       * (turn it off by removing it or setting it to false)
+       */
+      const posts = [
+        {
+          title: "December Newsletter",
+          excerpt: "Our final newsletter of 2025. Updates on our progress on platform improvements, particularly on benchmarking",
+          date: "2025-12-01",
+          type: "newsletter",
+          tags: ["Newsletter", "Benchmarking", "2025"],
+          url: "/resources/blog/newsletters/2025/december/",
+          featured: true
+        },
+        {
+          title: "November Newsletter",
+          excerpt: "Information about an update coming on the 16th of November.",
+          date: "2025-11-01",
+          type: "newsletter",
+          tags: ["Newsletter", "Update", "2025"],
+          url: "/resources/blog/newsletters/2025/november/"
+        },
+        {
+          title: "Test blog post for layout",
+          excerpt: "Layout elements for a blog template.",
+          date: "2026-01-10",
+          type: "blog",
+          tags: ["Ethics", "Design"],
+          url: "/resources/blog/posts/2026/09-01-2026/"
+        }
+      ];
+
+      const grid = document.getElementById("blogGridAll");
       const empty = document.getElementById("blogEmpty");
-      const cards = Array.from(document.querySelectorAll(".blog-card"));
+      const search = document.getElementById("blogSearch");
+      const chips = Array.from(document.querySelectorAll(".blog-chip"));
 
       let activeType = "all";
 
       function norm(s){ return String(s || "").toLowerCase().trim(); }
 
-      function cardText(card){
-        const title = card.querySelector(".blog-card-title")?.textContent || "";
-        const excerpt = card.querySelector(".blog-card-excerpt")?.textContent || "";
-        const tags = card.getAttribute("data-tags") || "";
-        const type = card.getAttribute("data-type") || "";
-        return norm(title + " " + excerpt + " " + tags + " " + type);
+      function safeDate(d){
+        const x = new Date(d);
+        return Number.isNaN(x.getTime()) ? new Date(0) : x;
       }
 
-      function apply(){
-        const q = norm(search?.value || "");
-        let visible = 0;
+      function typeLabel(type){
+        if (type === "blog") return "Blog";
+        if (type === "newsletter") return "Newsletter";
+        if (type === "update") return "Product update";
+        return "Post";
+      }
 
-        cards.forEach((card) => {
-          const type = card.getAttribute("data-type") || "";
-          const typeOk = (activeType === "all") || (type === activeType);
-          const qOk = (!q) || cardText(card).includes(q);
+      function matches(post, q){
+        if (!q) return true;
+        const tagText = (post.tags || []).join(" ");
+        const haystack = norm(
+          post.title + " " +
+          post.excerpt + " " +
+          typeLabel(post.type) + " " +
+          post.type + " " +
+          tagText + " " +
+          post.date
+        );
+        return haystack.includes(q);
+      }
 
-          const show = typeOk && qOk;
-          card.classList.toggle("is-hidden", !show);
-          if (show) visible += 1;
+      function sortPosts(list){
+        // Featured first, then newest -> oldest
+        return list.sort((a, b) => {
+          const af = a.featured ? 1 : 0;
+          const bf = b.featured ? 1 : 0;
+          if (bf !== af) return bf - af;
+          return safeDate(b.date) - safeDate(a.date);
         });
-
-        if (empty) empty.hidden = visible !== 0;
       }
 
+      function render(){
+        const q = norm(search.value);
+
+        const filtered = sortPosts(
+          posts
+            .filter(p => (activeType === "all" || p.type === activeType))
+            .filter(p => matches(p, q))
+            .slice() // avoid mutating original order unexpectedly
+        );
+
+        grid.innerHTML = "";
+
+        if (filtered.length === 0){
+          empty.hidden = false;
+          return;
+        }
+        empty.hidden = true;
+
+        filtered.forEach((p, idx) => {
+          const isFeaturedCard = idx === 0 && !!p.featured; // only “Featured” label on first featured item
+          const card = document.createElement("article");
+          card.className = "blog-card" + (isFeaturedCard ? " blog-card-featured" : "");
+
+          // Build tag pills (optional)
+          const tagsHtml = (p.tags && p.tags.length)
+            ? `<div class="blog-tag-row" aria-label="Tags">
+                 ${p.tags.map(t => `<span class="blog-tag">${t}</span>`).join("")}
+               </div>`
+            : "";
+
+          // Meta line: [Featured] • date • type
+          const featuredPillHtml = isFeaturedCard ? `<span class="blog-pill">Featured</span><span class="blog-dot" aria-hidden="true"></span>` : "";
+          const metaHtml = `
+            <div class="blog-card-meta">
+              ${featuredPillHtml}
+              <time datetime="${p.date}">${formatDateISOToGB(p.date)}</time>
+              <span class="blog-dot" aria-hidden="true"></span>
+              <span>${typeLabel(p.type)}</span>
+            </div>
+          `;
+
+          card.innerHTML = `
+            <a class="blog-card-link" href="${p.url}">
+              <div class="blog-card-top">
+                ${metaHtml}
+                <h2 class="blog-card-title">${p.title}</h2>
+                <p class="blog-card-excerpt">${p.excerpt}</p>
+              </div>
+              ${tagsHtml}
+            </a>
+          `;
+
+          grid.appendChild(card);
+        });
+      }
+
+      function formatDateISOToGB(iso){
+        const d = new Date(iso);
+        if (Number.isNaN(d.getTime())) return iso;
+        return d.toLocaleDateString("en-GB", { day: "2-digit", month: "short", year: "numeric" });
+      }
+
+      // Chip handling
       chips.forEach((chip) => {
         chip.addEventListener("click", () => {
           chips.forEach(c => c.classList.remove("is-active"));
           chip.classList.add("is-active");
           activeType = chip.dataset.filter || "all";
-          apply();
+          render();
         });
       });
 
-      search?.addEventListener("input", apply);
+      search.addEventListener("input", render);
 
-      clearBtn?.addEventListener("click", () => {
-        if (search) search.value = "";
-        activeType = "all";
-        chips.forEach(c => c.classList.toggle("is-active", c.dataset.filter === "all"));
-        apply();
-        search?.focus();
-      });
-
-      apply();
+      render();
     })();
   </script>
 </body>
