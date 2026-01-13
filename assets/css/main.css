@@ -722,6 +722,360 @@ ul{ margin:0; padding-left:1.1rem; }
   flex-shrink: 1;
   font-size: clamp(0.85rem, 1.1vw, 1rem);
 }
+/* ================= Header: Active page highlighting (gradient + white text) ================= */
+
+.nav-link.is-current{
+  color: #fff;
+  opacity: 1;
+  background: linear-gradient(135deg, var(--blue) 0%, #3385ff 100%);
+  border-color: rgba(0,102,204,.40);
+}
+
+.nav-panel a.is-current{
+  color: #fff;
+  background: linear-gradient(135deg, var(--blue) 0%, #3385ff 100%);
+  border-color: rgba(0,102,204,.40);
+}
+
+.nav-panel a.is-current::after{
+  opacity: 1;
+  filter: brightness(200%);
+}
+
+/* ================= Header: Mobile hamburger (3 gradient lines) ================= */
+
+.nav-toggle{
+  display:inline-flex;
+  flex-direction: column;
+  justify-content:center;
+  gap: 6px;
+
+  padding: 10px 6px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.nav-toggle:hover{ transform: translateY(-1px); }
+.nav-toggle:active{ transform: translateY(0); }
+
+.nav-toggle:focus-visible{
+  outline: 3px solid rgba(0,102,204,.25);
+  outline-offset: 4px;
+}
+
+.nav-toggle-bar{
+  display:block;
+  width: 28px;
+  height: 3px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--blue) 0%, #3385ff 100%);
+}
+
+/* Desktop: hide hamburger */
+@media (min-width: 900px){
+  .nav-toggle{ display:none; }
+}
+
+/* ================= Header: Mobile nav drawer (cascading menus) ================= */
+
+/* Back button is injected by JS; hide by default */
+.nav-back{ display:none; }
+
+@media (max-width: 899px){
+
+  /* Hide desktop CTA container on mobile (optional — keep if you want the header CTA gone on mobile) */
+  .header-actions{ display:none; }
+
+  /* Mobile drawer container */
+  .nav{
+    display:flex;                 /* overrides display:none */
+    flex-direction: column;
+    gap: .75rem;                  /* spacing between top-level items */
+    align-items: stretch;
+
+    position:absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+
+    margin-top: .6rem;
+    padding: .75rem;
+
+    background: rgba(255,255,255,.92);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(0,0,0,.10);
+    border-radius: 16px;
+
+    box-shadow: 0 18px 45px rgba(0,0,0,.14);
+
+    transform: translateY(-8px);
+    opacity: 0;
+    pointer-events: none;
+
+    transition: opacity .15s ease, transform .15s ease;
+    z-index: 70;
+  }
+
+  /* Open state (controlled by body.nav-open) */
+  body.nav-open .nav{
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  /* Top-level items full width */
+  .nav-dd{ width: 100%; }
+  .nav-link{
+    width:100%;
+    justify-content: space-between;
+  }
+
+  /* IMPORTANT: On mobile, panels are hidden by default (no dropdowns) */
+  .nav-panel{
+    display:none;
+    position: static;
+    opacity: 1 !important;
+    transform: none !important;
+    pointer-events: auto !important;
+
+    box-shadow: none;
+    border: none;
+    padding: 0;
+    background: transparent;
+  }
+
+  /* Back button (only visible in submenu mode) */
+  .nav-back{
+    display:none;
+    align-items:center;
+    gap: .55rem;
+
+    padding: .6rem .75rem;
+    border-radius: 14px;
+
+    background: rgba(0,0,0,.03);
+    border: 1px solid rgba(0,0,0,.10);
+    color: var(--grey);
+    cursor: pointer;
+  }
+
+  .nav-back span{
+    font-size: 1.05rem;
+    line-height: 1;
+  }
+
+  /* ========== Cascading submenu mode ========== */
+  .nav.is-submenu{
+    gap: .6rem;
+  }
+
+  /* Show back button in submenu */
+  .nav.is-submenu .nav-back{
+    display:flex;
+  }
+
+  /* Hide ALL top-level summaries in submenu mode */
+  .nav.is-submenu .nav-link{
+    display:none;
+  }
+
+  /* Show ONLY the active panel in submenu mode */
+  .nav.is-submenu .nav-dd .nav-panel{
+    display:none;
+    padding-top: .25rem;
+  }
+
+  .nav.is-submenu .nav-dd.is-active .nav-panel{
+    display:grid;
+    gap: .45rem;
+  }
+
+  /* Give submenu links a bit more tap comfort */
+  .nav.is-submenu .nav-panel a{
+    padding: .85rem 1rem;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .nav,
+  .nav-link,
+  .nav-panel,
+  .nav-panel a{
+    transition:none;
+  }
+}
+
+/* ================= Mobile cascading: Back button matches nav-link ================= */
+
+@media (max-width: 899px){
+
+  /* Only show Back in submenu mode (hard override) */
+  .nav .nav-back{ display:none !important; }
+  .nav.is-submenu .nav-back{ display:flex !important; }
+
+  /* Back button: match .nav-panel a EXACTLY */
+  .nav-back{
+    /* remove default button styling that can look "black" */
+    appearance:none;
+    -webkit-appearance:none;
+    background: none;
+    border: none;
+    outline: none;
+
+    /* now apply the exact .nav-panel a styles */
+    position:relative;
+    width:100%;
+    display:flex;
+    align-items:center;
+    justify-content:flex-start;
+    gap:.6rem;
+
+    padding:.65rem .75rem;
+    border-radius:12px;
+
+    font: inherit;
+    font-weight:650;
+    color: var(--grey);
+    text-decoration:none;
+
+    background: rgba(0,0,0,.02);
+    border: 1px solid rgba(0,0,0,.06);
+
+    cursor:pointer;
+
+    transition:
+      background-color .15s ease,
+      border-color .15s ease,
+      transform .15s ease;
+  }
+
+  /* Left arrow (mirrors .nav-panel a::after but reversed and on the LEFT) */
+  .nav-back::before{
+    content:"←";
+    display:inline-block;
+    opacity:.65;
+    transform: translateX(0);
+    transition: transform .15s ease, opacity .15s ease;
+  }
+
+  /* Remove any chance of extra icons/markers */
+  .nav-back::after{ content:none !important; }
+
+  .nav-back:hover{
+    background:#fff;
+    border-color: rgba(0,102,204,.22);
+    transform: translateY(-2px);
+  }
+
+  .nav-back:hover::before{
+    transform: translateX(-4px);
+    opacity:1;
+  }
+
+  .nav-back:active{
+    transform: translateY(0);
+  }
+
+  .nav-back:focus-visible{
+    outline: 3px solid rgba(0,102,204,.25);
+    outline-offset: 3px;
+  }
+
+  /* Spacing: match the panel gap (.35rem) in submenu mode */
+  .nav.is-submenu{
+    gap: .35rem;
+  }
+
+  /* Ensure the active panel doesn't add extra top padding */
+  .nav.is-submenu .nav-dd.is-active .nav-panel{
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+  }
+}
+
+@media (max-width: 899px){
+
+  /* ================= Mobile: top-level items look like submenu buttons ================= */
+
+  /* Make the top-level summary buttons match .nav-panel a */
+  .nav dd > summary.nav-link{
+    /* remove native summary marker */
+    list-style: none;
+  }
+  .nav dd > summary.nav-link::-webkit-details-marker{
+    display: none;
+  }
+
+  .nav-link{
+    /* match .nav-panel a layout */
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: .6rem;
+
+    padding: .65rem .75rem;
+    border-radius: 12px;
+
+    font-weight: 650;
+    color: var(--grey);
+    text-decoration: none;
+
+    background: rgba(0,0,0,.02);
+    border: 1px solid rgba(0,0,0,.06);
+
+    transition:
+      background-color .15s ease,
+      border-color .15s ease,
+      transform .15s ease;
+  }
+
+  /* Remove the dropdown triangle (desktop uses .nav-link::after { content:"▾"; }) */
+  .nav-link::after{
+    content: "→" !important;
+    display: inline-block;
+    opacity: .65;
+    transform: translateX(0);
+    transition: transform .15s ease, opacity .15s ease;
+  }
+
+  /* Hover matches submenu links */
+  .nav-link:hover{
+    background: #fff;
+    border-color: rgba(0,102,204,.22);
+    transform: translateY(-2px);
+  }
+
+  .nav-link:hover::after{
+    transform: translateX(4px);
+    opacity: 1;
+  }
+
+  .nav-link:active{
+    transform: translateY(0);
+  }
+
+  /* Active/current top-level still uses your gradient highlight */
+  .nav-link.is-current{
+    color: #fff;
+    background: linear-gradient(135deg, var(--blue) 0%, #3385ff 100%);
+    border-color: rgba(0,102,204,.40);
+  }
+
+  .nav-link.is-current::after{
+    opacity: 1;
+  }
+
+  /* Optional: reduce tap confusion — cursor looks like a button */
+  .nav-link{
+    cursor: pointer;
+  }
+}
+
+
 /* ================= Footer ================= */
 
 .site-footer{

@@ -9,7 +9,6 @@ async function loadPartial(selector, url) {
     if (!res.ok) throw new Error(`Failed to load ${url}`);
     container.innerHTML = await res.text();
 
-    // Signal that a partial has been injected (useful for attaching listeners)
     document.dispatchEvent(
       new CustomEvent("partial:loaded", { detail: { selector, url } })
     );
@@ -34,7 +33,6 @@ async function loadDataPartials() {
         if (!res.ok) throw new Error(`Failed to load ${url}`);
         el.innerHTML = await res.text();
 
-        // Fire the same event so we can initialise scripts after injection
         document.dispatchEvent(
           new CustomEvent("partial:loaded", {
             detail: { selector: `[data-partial="${url}"]`, url }
@@ -58,39 +56,221 @@ function closeAllDropdowns(except = null) {
   });
 }
 
+/* --------------------
+   Active nav highlighting (current page)
+-------------------- */
+function markActiveNavLinks() {
+  const header = document.querySelector(".site-header");
+  if (!header) return;
+
+  const normalise = (p) => {
+    if (!p) return "/";
+    p = p.split("?")[0].split("#")[0];
+    p = p.replace(/index\.html$/i, "");
+    if (p.length > 1) p = p.replace(/\/+$/, "");
+    return p || "/";
+  };
+
+  const current = normalise(window.location.pathname);
+
+  // Clear old state
+  header.querySelectorAll(".is-current").forEach((el) => el.classList.remove("is-current"));
+
+  // Mark matching link + its parent <summary>
+  header.querySelectorAll(".nav-dd").forEach((dd) => {
+    const links = dd.querySelectorAll(".nav-panel a[href]");
+    let foundInThisDropdown = false;
+
+    links.forEach((a) => {
+      const href = a.getAttribute("href");
+      const linkPath = normalise(href);
+
+      if (linkPath === current) {
+        a.classList.add("is-current");
+        foundInThisDropdown = true;
+      }
+    });
+
+    if (foundInThisDropdown) {
+      const summary = dd.querySelector(".nav-link");
+      if (summary) summary.classList.add("is-current");
+    }
+  });
+}
+
+/* --------------------
+   Mobile nav (hamburger -> drawer)
+-------------------- */
+function initMobileNav() {
+  // Bind once globally (works even if header is re-injected)
+  if (document.body.dataset.mobileNavBound === "1") return;
+  document.body.dataset.mobileNavBound = "1";
+
+  const getBtn = () => document.querySelector(".site-header .nav-toggle");
+  const getNav = () => document.querySelector(".site-header .nav");
+
+  const resetCascading = () => {
+    const nav = getNav();
+    if (!nav) return;
+    nav.classList.remove("is-submenu");
+    nav.querySelectorAll(".nav-dd.is-active").forEach((dd) => dd.classList.remove("is-active"));
+  };
+
+  const setOpen = (open) => {
+    document.body.classList.toggle("nav-open", open);
+
+    const btn = getBtn();
+    if (btn) {
+      btn.setAttribute("aria-expanded", open ? "true" : "false");
+      btn.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+    }
+
+    if (!open) {
+      resetCascading();
+      closeAllDropdowns();
+    }
+  };
+
+  // Toggle button click (delegated)
+  document.addEventListener("click", (e) => {
+    const btn = e.target.closest(".site-header .nav-toggle");
+    if (!btn) return;
+
+    const isOpen = document.body.classList.contains("nav-open");
+    setOpen(!isOpen);
+  });
+
+  // Close when tapping a nav link
+  document.addEventListener("click", (e) => {
+    const nav = getNav();
+    if (!nav) return;
+
+    const a = e.target.closest(".site-header .nav a");
+    if (!a) return;
+
+    setOpen(false);
+  });
+
+  // Click-away closes the mobile drawer
+  document.addEventListener("click", (e) => {
+    if (!document.body.classList.contains("nav-open")) return;
+    if (e.target.closest(".site-header")) return;
+    setOpen(false);
+  });
+
+  // ESC closes drawer too
+  document.addEventListener("keydown", (e) => {
+    if (e.key !== "Escape") return;
+    if (!document.body.classList.contains("nav-open")) return;
+    setOpen(false);
+  });
+
+  // Ensure initial state
+  setOpen(false);
+}
+
+/* --------------------
+   Cascading mobile menus + desktop dropdown behaviour
+-------------------- */
 function bindDropdownBehaviour() {
-  // Bind toggle listeners to any dropdowns that exist (and aren't already bound)
-  document.querySelectorAll(".nav-dd, .dropdown").forEach((dd) => {
+  const header = document.querySelector(".site-header");
+  if (!header) return;
+
+  const nav = header.querySelector(".nav");
+  if (!nav) return;
+
+  const isMobile = () => window.matchMedia("(max-width: 899px)").matches;
+
+  // Ensure a single Back button exists (injected, so you don't have to edit header.html)
+  let backBtn = nav.querySelector(".nav-back");
+  if (!backBtn) {
+    backBtn = document.createElement("button");
+    backBtn.type = "button";
+    backBtn.className = "nav-back";
+    backBtn.setAttribute("aria-label", "Back to menu");
+    backBtn.innerHTML = `Back`;
+    nav.prepend(backBtn);
+  }
+
+  const enterSubmenu = (dd) => {
+    // Close others + open this one (so any [open]-based CSS will show the panel)
+    closeAllDropdowns(dd);
+    dd.open = true;
+
+    nav.classList.add("is-submenu");
+    nav.querySelectorAll(".nav-dd.is-active").forEach((x) => x.classList.remove("is-active"));
+    dd.classList.add("is-active");
+  };
+
+  const exitSubmenu = () => {
+    nav.classList.remove("is-submenu");
+    nav.querySelectorAll(".nav-dd.is-active").forEach((x) => x.classList.remove("is-active"));
+
+    // Close everything so you return to the top-level list cleanly
+    closeAllDropdowns();
+  };
+
+  // Back button (mobile cascading)
+  if (backBtn.dataset.bound !== "1") {
+    backBtn.dataset.bound = "1";
+    backBtn.addEventListener("click", () => {
+      exitSubmenu();
+    });
+  }
+
+  // Bind each dropdown once
+  nav.querySelectorAll(".nav-dd").forEach((dd) => {
     if (dd.dataset.bound === "1") return;
     dd.dataset.bound = "1";
 
+    const summary = dd.querySelector("summary");
+    if (!summary) return;
+
+    // Mobile: turn summary into "go to submenu"
+    summary.addEventListener("click", (e) => {
+      if (!isMobile()) return; // desktop uses <details> behaviour
+      e.preventDefault();      // prevent native <details> toggle on mobile
+      enterSubmenu(dd);
+    });
+
+    // Desktop: keep your original toggle behaviour (close others)
     dd.addEventListener("toggle", () => {
+      if (isMobile()) return;  // mobile isn't using <details> open/close
       if (!dd.open) return;
       closeAllDropdowns(dd);
     });
   });
+
+  // If we rotate/resize from mobile->desktop while in submenu, reset
+  if (nav.dataset.resizeBound !== "1") {
+    nav.dataset.resizeBound = "1";
+    window.addEventListener("resize", () => {
+      if (!isMobile()) {
+        exitSubmenu();
+      }
+    });
+  }
 }
 
-// Global click-away close (works for injected elements too)
+/* Global click-away close for desktop dropdowns */
 document.addEventListener("click", (e) => {
   if (e.target.closest(".nav-dd, .dropdown")) return;
   closeAllDropdowns();
 });
 
-// ESC closes any open dropdowns
+/* ESC closes any open desktop dropdowns */
 document.addEventListener("keydown", (e) => {
   if (e.key !== "Escape") return;
   closeAllDropdowns();
 });
 
-// --------------------
-// Conditions Panel Logic
-// --------------------
+/* --------------------
+   Conditions Panel Logic
+-------------------- */
 function initConditionsPanel() {
   const root = document.querySelector(".conditions");
   if (!root) return;
 
-  // Prevent double-binding if partial gets reloaded
   if (root.dataset.bound === "1") return;
   root.dataset.bound = "1";
 
@@ -120,7 +300,6 @@ function initConditionsPanel() {
     const tpl = root.querySelector(`#condData-${cond}`);
     const act = root.querySelector(`#condActions-${cond}`);
 
-    // If you haven't added templates yet, fail gracefully
     if (!tpl) {
       console.warn(`No template found for condData-${cond}`);
       return;
@@ -142,13 +321,11 @@ function initConditionsPanel() {
     panel.scrollIntoView({ behavior: "smooth", block: "nearest" });
   };
 
-  // Chip clicks + close button (delegated)
   root.addEventListener("click", (e) => {
     const chip = e.target.closest(".cond-chip");
     if (chip) {
       const cond = chip.dataset.cond;
 
-      // Toggle: clicking active chip closes
       if (!panel.hidden && chip.classList.contains("is-active")) {
         closePanel();
       } else {
@@ -162,45 +339,37 @@ function initConditionsPanel() {
     }
   });
 
-  // Click-away closes (only if panel open)
   document.addEventListener("click", (e) => {
     if (!panel || panel.hidden) return;
     if (e.target.closest(".conditions")) return;
     closePanel();
   });
 
-  // ESC closes
   document.addEventListener("keydown", (e) => {
     if (e.key !== "Escape") return;
     if (panel && !panel.hidden) closePanel();
   });
 }
 
-// Boot (single source of truth)
+/* --------------------
+   Boot
+-------------------- */
 document.addEventListener("DOMContentLoaded", async () => {
-  // Load header/footer once
   await loadPartial("#site-header", "/components/header.html");
   await loadPartial("#site-footer", "/components/footer.html");
-
-  // Load any other partials (like conditions)
   await loadDataPartials();
 
-  // Bind behaviours
+  initMobileNav();
   bindDropdownBehaviour();
+  markActiveNavLinks();
   setFooterYear();
 
-  // If conditions partial already exists, init now
   initConditionsPanel();
 });
 
-// If partials are injected later, rebind what’s needed
-document.addEventListener("partial:loaded", (e) => {
+document.addEventListener("partial:loaded", () => {
+  initMobileNav();
   bindDropdownBehaviour();
+  markActiveNavLinks();
   setFooterYear();
-
-  // Initialise conditions after its partial injects
-  // (works whether it’s included via data-partial or swapped later)
-  if (e?.detail?.url && e.detail.url.includes("conditions.html")) {
-    initConditionsPanel();
-  }
 });
