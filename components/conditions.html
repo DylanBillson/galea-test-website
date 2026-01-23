@@ -36,41 +36,222 @@
       <div class="cond-actions" id="condActions"></div>
     </div>
   </div>
-
-  <!-- Data blocks (hidden) -->
-  <template id="condData-ocd">
-    <p>OCD involves unwanted thoughts (obsessions) and repetitive behaviours (compulsions). Symptoms can be distressing and disruptive, even when a person recognises they’re irrational.</p>
-    <p><strong>Related conditions include:</strong></p>
-    <ul class="cond-list">
-      <li>Pure O (intrusive thoughts)</li>
-      <li>Body Dysmorphic Disorder (BDD)</li>
-      <li>Hoarding Disorder</li>
-      <li>Trichotillomania</li>
-      <li>Excoriation Disorder</li>
-    </ul>
-    <p>Galea supports structured reflection and symptom tracking over time, helping people (and clinicians, where relevant) spot patterns and decide on next steps.</p>
-  </template>
-
-  <template id="condActions-ocd">
-    <a class="btn btn-secondary" href="https://www.ocduk.org/ocd/" target="_blank" rel="noopener noreferrer">OCD UK</a>
-  </template>
-
+  <!-- Condition Anxiety -->
   <template id="condData-anxiety">
-    <p>Anxiety is a normal response to stress — but when it becomes persistent, overwhelming, or interferes with daily life, it may be part of an anxiety disorder.</p>
-    <p><strong>Common forms include:</strong></p>
+    <p>Anxiety is a normal response to stress, but when it becomes persistent, overwhelming, or interferes with daily life, it may be part of an anxiety disorder. Our platform supports people experiencing anxiety-related symptoms, whether they’ve been formally diagnosed or are still exploring what they’re feeling.</p>
+    <p><strong>Common forms of anxiety include:</strong></p>
     <ul class="cond-list">
       <li>Generalised Anxiety Disorder (GAD)</li>
       <li>Panic Disorder</li>
       <li>Social Anxiety</li>
       <li>Specific phobias (e.g., agoraphobia, health anxiety)</li>
     </ul>
-    <p>Galea helps structure symptoms into a clearer picture — useful for self-understanding, monitoring change, or supporting clinical conversations.</p>
+    <p>Our tools offer structured, evidence-informed assessments that can help individuals or care providers better understand and monitor these experiences.</p>
   </template>
 
   <template id="condActions-anxiety">
     <a class="btn btn-secondary" href="https://www.nhs.uk/mental-health/conditions/generalised-anxiety-disorder-gad/" target="_blank" rel="noopener noreferrer">NHS – Anxiety disorders</a>
   </template>
 
-  <!-- Add the rest in the same pattern:
-       condData-ptsd + condActions-ptsd, etc. -->
-</section>
+  <!-- Condition Template -->
+  <template id="condData-TEMPLATE">
+    <p>firstline</p>
+    <p><strong>Common forms of template include:</strong></p>
+    <ul class="cond-list">
+      <li>line</li>
+      <li>line</li>
+      <li>line</li>
+      <li>line</li>
+    </ul>
+    <p>last line</p>
+  </template>
+
+  <template id="condActions-TEMPLATE">
+    <a class="btn btn-secondary" href="LINK" target="_blank" rel="noopener noreferrer">buttontext</a>
+  </template>
+
+  <!-- Condition Depression -->
+  <template id="condData-depression">
+    <p>Depression goes beyond low mood, it can affect energy, motivation, relationships, sleep, and physical health. If you're struggling or supporting someone who is, you're not alone. Our platform provides tools to help track symptoms, identify patterns, and support care planning.</p>
+    <p><strong>Forms of depression include:</strong></p>
+    <ul class="cond-list">
+      <li>Major Depressive Disorder</li>
+      <li>Persistent Depressive Disorder (Dysthymia)</li>
+      <li>Seasonal Affective Disorder (SAD)</li>
+      <li>Postnatal (Postpartum) Depression</li>
+    </ul>
+    <p>Our software offers private, structured self-assessment tools to help users and clinicians monitor emotional wellbeing and make more informed decisions.</p>
+  </template>
+
+  <template id="condActions-depression">
+    <a class="btn btn-secondary" href="https://www.mind.org.uk/information-support/types-of-mental-health-problems/depression/" target="_blank" rel="noopener noreferrer">Mind - Depression</a>
+  </template>
+
+  <!-- Condition PTSD -->
+  <template id="condData-ptsd">
+    <p>PTSD can follow exposure to a traumatic event such as assault, accident, or disaster. Complex PTSD often stems from prolonged trauma, such as childhood abuse. Both can cause flashbacks, avoidance, anxiety, or emotional numbness.</p>
+    <p><strong>Types of trauma-related responses include:</strong></p>
+    <ul class="cond-list">
+      <li>PTSD</li>
+      <li>Complex PTSD</li>
+      <li>Acute Stress Disorder</li>
+    </ul>
+    <p>We don’t diagnose PTSD, but our platform can help identify signs and support recovery pathways. Our assessment tools help individuals recognise patterns and seek tailored support.</p>
+  </template>
+
+  <template id="condActions-ptsd">
+    <a class="btn btn-secondary" href="https://www.nhs.uk/mental-health/conditions/post-traumatic-stress-disorder-ptsd/overview/" target="_blank" rel="noopener noreferrer">NHS - PTSD</a>
+  </template>
+
+  <!-- Condition OCD -->
+  <template id="condData-ocd">
+    <p>OCD involves unwanted thoughts (obsessions) and repetitive behaviours (compulsions). Related conditions also involve compulsive or body-focused behaviours. These symptoms can be distressing and disruptive, even when a person understands they are irrational.</p>
+    <p><strong>Related conditions include:</strong></p>
+    <ul class="cond-list">
+      <li>Pure O (intrusive thoughts)</li>
+      <li>Body Dysmorphic Disorder (BDD)</li>
+      <li>Hoarding Disorder</li>
+      <li>Trichotillomania</li>
+    </ul>
+    <p>Our platform offers structured symptom tracking and prompts that may help users or clinicians understand behavioural patterns over time.</p>
+  </template>
+
+  <template id="condActions-ocd">
+    <a class="btn btn-secondary" href="https://www.ocduk.org/ocd/" target="_blank" rel="noopener noreferrer">OCD UK</a>
+  </template>
+
+  <!-- Condition Eating Disorders -->
+  <template id="condData-eating">
+    <p>Eating disorders involve serious disturbances in eating behaviours, often linked to emotional distress or a desire for control. Early identification and support are critical.</p>
+    <p><strong>Types of eating disorders include:</strong></p>
+    <ul class="cond-list">
+      <li>Anorexia Nervosa</li>
+      <li>Bulimia Nervosa</li>
+      <li>Binge Eating Disorder</li>
+      <li>ARFID</li>
+    </ul>
+    <p>Our tools provide a private space to explore eating-related concerns and share insights with health professionals if desired.</p>
+  </template>
+
+  <template id="condActions-eating">
+    <a class="btn btn-secondary" href="https://www.beateatingdisorders.org.uk/get-information-and-support/about-eating-disorders/" target="_blank" rel="noopener noreferrer">Beat Eating Disorders</a>
+  </template>
+
+  <!-- Condition Mood Disorders -->
+  <template id="condData-mood">
+    <p>Bipolar disorder involves shifts between high-energy (manic) and low-energy (depressive) states. It may appear suddenly or gradually and can vary in intensity.</p>
+    <p><strong>Forms include:</strong></p>
+    <ul class="cond-list">
+      <li>Bipolar I & II</li>
+      <li>Cyclothymia</li>
+      <li>Rapid Cycling</li>
+      <li>Mixed Mood States</li>
+    </ul>
+    <p>Our platform supports mood tracking and symptom review, helping users and clinicians identify shifts over time.</p>
+  </template>
+
+  <template id="condActions-mood">
+    <a class="btn btn-secondary" href="https://www.bipolaruk.org/understanding-bipolar" target="_blank" rel="noopener noreferrer">Bipolar UK</a>
+  </template>
+
+  <!-- Condition Psychotic Disorders -->
+  <template id="condData-psychotic">
+    <p>Schizophrenia and related conditions can affect perception, thinking, and behaviour. Early symptoms may include paranoia, hallucinations, or disorganised thinking. Support is possible, and recovery is a journey.</p>
+    <p><strong>Common diagnoses include:</strong></p>
+    <ul class="cond-list">
+      <li>Schizophrenia</li>
+      <li>Schizoaffective Disorder</li>
+      <li>Delusional Disorder</li>
+      <li>Brief Psychotic Disorder</li>
+    </ul>
+    <p>Our tools don’t diagnose but can assist with structured symptom conversations in care settings and checks between appointments.</p>
+  </template>
+
+  <template id="condActions-psychotic">
+    <a class="btn btn-secondary" href="https://www.rethink.org/advice-and-information/about-mental-illness/learn-more-about-conditions/schizophrenia/" target="_blank" rel="noopener noreferrer">Rethink Mental Illness</a>
+  </template>
+
+  <!-- Condition Personality Disorders -->
+  <template id="condData-personality">
+    <p>Personality disorders are enduring patterns of inner experience and behaviour that differ markedly from cultural expectations and cause difficulties in relationships, work, or self-identity.</p>
+    <p><strong>Recognised types include:</strong></p>
+    <ul class="cond-list">
+      <li>Borderline Personality Disorder (BPD)</li>
+      <li>Narcissistic Personality Disorder</li>
+      <li>Avoidant, Antisocial, or Paranoid Personality Disorders</li>
+      <li>Dependent Personality Disorder</li>
+    </ul>
+    <p>We offer tools for reflection, pattern-tracking, and clinical dialogue.</p>
+  </template>
+
+  <template id="condActions-personality">
+    <a class="btn btn-secondary" href="https://www.mind.org.uk/information-support/types-of-mental-health-problems/personality-disorder/" target="_blank" rel="noopener noreferrer">Mind UK</a>
+  </template>
+
+  <!-- Condition Neurodiversity -->
+  <template id="condData-neurodiversity">
+    <p>Neurodivergent conditions often begin in childhood and affect individuals throughout life. Symptoms may include challenges with attention, sensory processing, social interaction, or impulse control.</p>
+    <p><strong>Conditions include:</strong></p>
+    <ul class="cond-list">
+      <li>ADHD (Inattentive, Hyperactive, Combined)</li>
+      <li>Autism Spectrum Disorders (ASD)</li>
+      <li>Tic Disorders and Tourette’s Syndrome</li>
+    </ul>
+    <p>Our assessments include symptom areas relevant to neurodivergence, helping users understand and manage their experience.</p>
+  </template>
+
+  <template id="condActions-neurodiversity">
+    <a class="btn btn-secondary" href="https://www.adhdfoundation.org.uk/resources/what-is-adhd" target="_blank" rel="noopener noreferrer">ADHD Foundation</a>
+    <a class="btn btn-secondary" href="https://www.autism.org.uk/advice-and-guidance/what-is-autism" target="_blank" rel="noopener noreferrer">National Autistic Society</a>
+  </template>
+
+  <!-- Condition Addiction -->
+  <template id="condData-addiction">
+    <p>Substance and behavioural addictions can affect physical health, relationships, and emotional wellbeing. Many people live with both addiction and another mental health condition (dual diagnosis).</p>
+    <p><strong>Included types:</strong></p>
+    <ul class="cond-list">
+      <li>Alcohol Dependence</li>
+      <li>Drug Use (prescription or illicit)</li>
+      <li>Gambling Addiction</li>
+      <li>Internet / Screen Addiction</li>
+    </ul>
+    <p>Our platform supports self-awareness and behaviour tracking, which can complement therapeutic or recovery support.</p>
+  </template>
+
+  <template id="condActions-addiction">
+    <a class="btn btn-secondary" href="https://www.nhs.uk/live-well/addiction-support/" target="_blank" rel="noopener noreferrer">NHS - Addiction</a>
+  </template>
+
+  <!-- Condition Grief, Adjustment & Life Stress -->
+  <template id="condData-grief">
+    <p>Not all distress is a mental illness. Major life changes like loss, divorce, or job upheaval can cause grief and adjustment difficulties that feel overwhelming but are entirely human.</p>
+    <p><strong>Situations include:</strong></p>
+    <ul class="cond-list">
+      <li>Bereavement</li>
+      <li>Divorce / Separation</li>
+      <li>Relocation or Redundancy</li>
+      <li>Caregiver Burnout</li>
+    </ul>
+    <p>We offer space for structured self-reflection and mood monitoring during difficult transitions.</p>
+  </template>
+
+  <template id="condActions-grief">
+    <a class="btn btn-secondary" href="https://www.cruse.org.uk/understanding-grief/" target="_blank" rel="noopener noreferrer">Cruse - Understanding Grief</a>
+  </template>
+
+  <!-- Condition Trauma -->
+  <template id="condData-trauma">
+    <p>Trauma from childhood, relationships, institutions, or neglect can shape long-term emotional and behavioural patterns. These experiences can lead to distress without fitting neatly into a single diagnosis.</p>
+    <p><strong>Types include:</strong></p>
+    <ul class="cond-list">
+      <li>Childhood Sexual Abuse</li>
+      <li>Domestic Abuse or Coercive Control</li>
+      <li>Institutional Abuse</li>
+      <li>Developmental Trauma</li>
+    </ul>
+    <p>Our platform provides a private, secure environment to explore trauma-related symptoms and identify helpful support pathways.</p>
+  </template>
+
+  <template id="condActions-trauma">
+    <a class="btn btn-secondary" href="https://www.nhs.uk/mental-health/conditions/post-traumatic-stress-disorder-ptsd/" target="_blank" rel="noopener noreferrer">NHS - Trauma</a>
+  </template>

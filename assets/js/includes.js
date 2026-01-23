@@ -45,6 +45,26 @@ async function loadDataPartials() {
   );
 }
 
+/* --------------------
+   Script loader (for scripts inside injected partials)
+-------------------- */
+function loadScriptOnce(src) {
+  // Already present?
+  if ([...document.scripts].some((s) => (s.src || "").includes(src))) {
+    return Promise.resolve(true);
+  }
+
+  return new Promise((resolve, reject) => {
+    const s = document.createElement("script");
+    s.src = src;
+    s.defer = true;
+    s.onload = () => resolve(true);
+    s.onerror = () => reject(new Error(`Failed to load script: ${src}`));
+    document.head.appendChild(s);
+  });
+}
+
+
 function setFooterYear() {
   const y = document.getElementById("year");
   if (y) y.textContent = new Date().getFullYear();
@@ -358,6 +378,13 @@ document.addEventListener("DOMContentLoaded", async () => {
   await loadPartial("#site-header", "/components/header.html");
   await loadPartial("#site-footer", "/components/footer.html");
   await loadDataPartials();
+  // Analytics + cookie banner (site-wide)
+  try {
+    await loadScriptOnce("/assets/js/matomo-init.js");
+    await loadScriptOnce("/assets/js/cookie-banner.js");
+  } catch (err) {
+    console.warn(err);
+  }
 
   initMobileNav();
   bindDropdownBehaviour();
@@ -367,7 +394,14 @@ document.addEventListener("DOMContentLoaded", async () => {
   initConditionsPanel();
 });
 
-document.addEventListener("partial:loaded", () => {
+document.addEventListener("partial:loaded", async () => {
+  // Analytics + cookie banner (site-wide)
+  try {
+    await loadScriptOnce("/assets/js/matomo-init.js");
+    await loadScriptOnce("/assets/js/cookie-banner.js");
+  } catch (err) {
+    console.warn(err);
+  }
   initMobileNav();
   bindDropdownBehaviour();
   markActiveNavLinks();
